@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://6763pew6gisq"]
+[gd_scene load_steps=7 format=3 uid="uid://6763pew6gisq"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_b2k88"]
 [ext_resource type="Texture2D" uid="uid://0yj0bpe8q80x" path="res://icon.svg" id="2_hecgj"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_xnyqi"]
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_4xbm4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u06k5"]
 
@@ -20,7 +21,14 @@ modulate = Color(1, 1, 0, 1)
 texture = ExtResource("2_hecgj")
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("3_xnyqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_f8b3g")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="EnemySpawner" type="Node" parent="."]
+script = ExtResource("4_4xbm4")

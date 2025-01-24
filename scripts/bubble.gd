@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-@export var player: NodePath
+@onready var bubble: CharacterBody2D = $"."
 
 const SPEED = 200.0
 
 func _physics_process(delta: float) -> void:
-	var player_node: CharacterBody2D = get_node(player)
-	
-	if player_node:
-		var direction = (player_node.global_position - global_position).normalized()
+	var player = get_tree().get_nodes_in_group("player")[0]
+
+	if player:
+		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * SPEED
 		
 		move_and_slide()

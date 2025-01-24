@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://brcuxf7gihes6"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_78a5o"]
-[ext_resource type="Texture2D" uid="uid://0yj0bpe8q80x" path="res://icon.svg" id="2_4pi7u"]
+[ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="2_d50a0"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_qvq7t"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_8k852"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_jwe78"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkpxv"]
-radius = 60.0
+radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4is44"]
-radius = 80.0
+radius = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_awqkn"]
 radius = 60.0
@@ -20,7 +20,7 @@ script = ExtResource("1_78a5o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 1, 1)
-texture = ExtResource("2_4pi7u")
+texture = ExtResource("2_d50a0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kkpxv")
@@ -30,6 +30,8 @@ script = ExtResource("3_qvq7t")
 MAX_HEALTH = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("4_jwe78")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

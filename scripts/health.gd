@@ -7,6 +7,5 @@ signal health_depleted
 
 func damage(attack: Attack) -> void:
 	health -= attack.damage
-	
 	if health <= 0:
 		health_depleted.emit()
