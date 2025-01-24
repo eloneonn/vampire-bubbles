@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
-[ext_resource type="Texture2D" uid="uid://0yj0bpe8q80x" path="res://icon.svg" id="1_h8c5l"]
+[ext_resource type="Texture2D" uid="uid://bwu8l5g5tleja" path="res://assets/sprites/character.png" id="2_nnqnq"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_yall3"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_qfmrt"]
 
@@ -14,7 +14,7 @@ radius = 65.01
 script = ExtResource("1_4k555")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_h8c5l")
+texture = ExtResource("2_nnqnq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_op8pd")
