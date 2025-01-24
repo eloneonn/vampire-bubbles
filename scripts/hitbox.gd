@@ -1,7 +1,10 @@
 class_name Hitbox extends Area2D
 
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 func _ready() -> void:
 	self.connect("area_entered", on_enter)
+	collision_shape.disabled = true
 
 func on_enter(area: Area2D):
 	if area is not Hurtbox:
@@ -13,3 +16,8 @@ func on_enter(area: Area2D):
 	attack.damage = 10
 	
 	hurtbox.damage(attack)
+
+func enable_for(duration: float) -> void:
+	collision_shape.disabled = false
+	await get_tree().create_timer(duration).timeout
+	collision_shape.disabled = true

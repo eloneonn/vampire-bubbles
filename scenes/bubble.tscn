@@ -27,6 +27,7 @@ shape = SubResource("CircleShape2D_kkpxv")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_qvq7t")
+MAX_HEALTH = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 script = ExtResource("4_jwe78")
@@ -35,8 +36,12 @@ script = ExtResource("4_jwe78")
 shape = SubResource("CircleShape2D_4is44")
 
 [node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("4_8k852")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_awqkn")
+
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
