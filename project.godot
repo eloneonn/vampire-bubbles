@@ -24,6 +24,7 @@ PlayerManager="*res://scripts/player_manager.gd"
 [global_group]
 
 player=""
+enemies=""
 
 [input]
 

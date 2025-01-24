@@ -2,6 +2,8 @@ extends Node
 
 var timer: Timer
 
+signal game_ended
+
 func start_game():
 	# Create a new Timer instance
 	timer = Timer.new()
@@ -27,3 +29,6 @@ func get_time():
 func _on_timer_timeout():
 	pass
 	# Perform any additional actions needed when the timer finishes
+
+func end_game():
+	game_ended.emit()

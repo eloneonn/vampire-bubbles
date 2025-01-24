@@ -15,7 +15,7 @@ radius = 70.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_awqkn"]
 radius = 60.0
 
-[node name="Bubble" type="CharacterBody2D"]
+[node name="Bubble" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_78a5o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -29,7 +29,7 @@ shape = SubResource("CircleShape2D_kkpxv")
 script = ExtResource("3_qvq7t")
 MAX_HEALTH = 1.0
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
 collision_layer = 3
 script = ExtResource("4_jwe78")
 permanent = true

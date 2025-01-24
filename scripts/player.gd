@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 300.0
+const speed = 500.0
 @onready var health: Health = $Health
 @onready var time_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/TimerLable
 @onready var health_lable: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthLable
@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_health_health_depleted() -> void:
-	queue_free()
+	GameManager.end_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

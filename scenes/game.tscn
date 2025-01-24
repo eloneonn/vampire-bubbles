@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk4s5jhai7aah"]
+[gd_scene load_steps=6 format=3 uid="uid://bk4s5jhai7aah"]
 
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
 [ext_resource type="PackedScene" uid="uid://6763pew6gisq" path="res://scenes/enemy_1.tscn" id="3_katr8"]
+[ext_resource type="Texture2D" uid="uid://deh5ir3e38fns" path="res://assets/backgrounds/VB_LivingRoom.png" id="4_knx4x"]
+
+[sub_resource type="GDScript" id="GDScript_okrbu"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_imjcd")
@@ -13,4 +28,47 @@ scale = Vector2(0.991383, 1)
 [node name="Enemy1" parent="." instance=ExtResource("3_katr8")]
 position = Vector2(496, -239)
 player = NodePath("../Player")
-orbit_radius = 1000.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -10
+texture_repeat = 2
+texture = ExtResource("4_knx4x")
+polygon = PackedVector2Array(-4386, 3733, -5302, -3157, 6704, -3575, 6110, 4515)
+
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="GameOverScreen/CenterContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+script = SubResource("GDScript_okrbu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverScreen/CenterContainer/VBoxContainer/Button"]
+layout_mode = 0
+
+[connection signal="pressed" from="GameOverScreen/CenterContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
