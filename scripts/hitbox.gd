@@ -14,7 +14,7 @@ func on_enter(area: Area2D):
 		
 	var hurtbox: Hurtbox = area
 	var attack = Attack.new()
-	attack.damage = 100
+	attack.damage = 10
 	
 	hurtbox.damage(attack)
 
