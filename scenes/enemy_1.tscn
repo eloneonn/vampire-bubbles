@@ -12,6 +12,8 @@ radius = 60.0
 
 [node name="Enemy1" type="CharacterBody2D"]
 script = ExtResource("1_b2k88")
+orbit_radius = 500.0
+spawn_interval = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u06k5")

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var timer: Timer = $Timer
 @onready var enemy_spawner: EnemySpawner = $EnemySpawner
 
-var spawn_interval: float = 1.0
+@export var spawn_interval: float = 1.0
 var angle = 0.0
 
 func _ready() -> void:

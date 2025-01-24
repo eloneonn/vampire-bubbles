@@ -13,4 +13,4 @@ scale = Vector2(0.991383, 1)
 [node name="Enemy1" parent="." instance=ExtResource("3_katr8")]
 position = Vector2(496, -239)
 player = NodePath("../Player")
-orbit_radius = 500.0
+orbit_radius = 1000.0

@@ -15,6 +15,4 @@ func _process(delta: float) -> void:
 
 # Called every x seconds
 func perform_attack() -> void:
-	print("attackin!")
-	print(str(weapon_type.duration))
 	hitbox.enable_for(weapon_type.duration)
