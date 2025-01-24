@@ -24,6 +24,29 @@ position_smoothing_enabled = true
 
 [node name="HUD" type="CanvasLayer" parent="Camera2D"]
 
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D/HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/HUD/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TimerLable" type="Label" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "perkele
+"
+vertical_alignment = 2
+
+[node name="HealthLable" type="Label" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+vertical_alignment = 1
+
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_yall3")
 

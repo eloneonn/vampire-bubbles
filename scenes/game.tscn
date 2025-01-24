@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk4s5jhai7aah"]
+[gd_scene load_steps=6 format=3 uid="uid://bk4s5jhai7aah"]
 
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="2_e7nrq"]
-[ext_resource type="PackedScene" uid="uid://6763pew6gisq" path="res://scenes/enemy_1.tscn" id="3_katr8"]
-[ext_resource type="PackedScene" uid="uid://brcuxf7gihes6" path="res://scenes/bubble.tscn" id="4_4gnjh"]
+[ext_resource type="PackedScene" uid="uid://bhari8xjlev7o" path="res://scenes/enemy_1.tscn" id="3_katr8"]
+[ext_resource type="PackedScene" path="res://scenes/bubble.tscn" id="4_4gnjh"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_imjcd")
 
 [node name="Player" parent="." instance=ExtResource("1_id7p0")]
 scale = Vector2(0.991383, 1)
