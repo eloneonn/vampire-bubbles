@@ -1,15 +1,20 @@
 class_name Weapon extends Node
 
-@export var damage: float = 10
-@export var speed: float = 10
-@export var hitbox: Area2D
+@export var weapon_type: WeaponType = WeaponType.new()
+@onready var hitbox: Hitbox = $"../Hitbox"
+@onready var timer: Timer = $Timer
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	timer.wait_time = weapon_type.speed 
+	timer.one_shot = false
+	timer.connect("timeout", perform_attack)
+	timer.start()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+# Called every x seconds
+func perform_attack() -> void:
+	print("attackin!")
+	print(str(weapon_type.duration))
+	hitbox.enable_for(weapon_type.duration)
