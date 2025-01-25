@@ -36,12 +36,14 @@ func _on_health_health_depleted() -> void:
 	PlayerManager.add_experience(1)
 	PlayerManager.add_kill(1)
 	
-	sprite_2d.visible = false
-	hitbox.enabled = false
+	if sprite_2d:
+		sprite_2d.visible = false
+	if hitbox:
+		hitbox.enabled = false
+		
 	await get_tree().create_timer(0.9).timeout
 	
 	queue_free()
-
 
 func _on_health_lost_health(amount: float) -> void:
 	audio_stream_player_2d.stream = clang_sound

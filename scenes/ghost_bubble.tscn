@@ -45,9 +45,9 @@ shape = SubResource("CircleShape2D_kkpxv")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("3_3bbvq")
-MAX_HEALTH = 20.0
+MAX_HEALTH = 35.0
 
-[node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 3
 script = ExtResource("4_wqx5q")
 permanent = true

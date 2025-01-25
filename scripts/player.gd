@@ -54,45 +54,30 @@ func _on_xp_change(xp: float) -> void:
 	xp_bar.value = xp
 
 func on_upgrade_receive(upgrade: Enums.Upgrade):
-	var healing = 0
-	if upgrade == Enums.Upgrade.HEAL_MINOR:
-		healing = 25
-	elif upgrade == Enums.Upgrade.HEAL_MINOR:
-		healing = 50
-	elif upgrade == Enums.Upgrade.HEAL_MINOR:
-		healing = 75
-	
-	if healing != 0:
-		var new_health = health.health + healing
-		
-		if new_health >= PlayerManager.max_health:
-			health.health = PlayerManager.max_health
-		else:
-			health.health = new_health 
-		
-		return
-	
 	match upgrade:
+		Enums.Upgrade.HEAL_MINOR:
+			health.heal(25)
+		Enums.Upgrade.HEAL_MID:
+			health.heal(50)
+		Enums.Upgrade.HEAL_MAJOR:
+			health.heal(75)
 		Enums.Upgrade.CLAW_DMG:
-			print("param3 is 3!")
+			claw.damage += claw.damage * 0.25
 		Enums.Upgrade.CLAW_SPEED:
-			print("param3 is not 3!")
-		Enums.Upgrade.CLAW_SIZE:
-			print("param3 is not 3!")
+			claw.speed += claw.speed * -0.25
+		#Enums.Upgrade.CLAW_SIZE:
 		Enums.Upgrade.TAILWHIP:
-			print("param3 is not 3!")
+			tail_whip.enabled = true
 		Enums.Upgrade.TAILWHIP_DMG:
-			print("param3 is not 3!")
+			tail_whip.damage += tail_whip.damage * 0.25
 		Enums.Upgrade.TAILWHIP_SPEED:
-			print("param3 is not 3!")
-		Enums.Upgrade.TAILWHIP_SIZE:
-			print("param3 is not 3!")
+			tail_whip.speed += tail_whip.speed * 0.25
+		#Enums.Upgrade.TAILWHIP_SIZE:
 		Enums.Upgrade.FURBALL:
 			print("param3 is not 3!")
 		Enums.Upgrade.FURBALL_DMG:
 			print("param3 is not 3!")
-		Enums.Upgrade.FURBALL_SPEED:
-			print("param3 is not 3!")
+		#Enums.Upgrade.FURBALL_SPEED:
 		Enums.Upgrade.FURBALL_PROJECTILE:
 			print("param3 is not 3!")
 

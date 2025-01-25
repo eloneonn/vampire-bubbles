@@ -7,12 +7,20 @@ var damage_indicator = preload("res://scenes/DamageIndicator.tscn")
 signal health_depleted
 signal lost_health(amount: float)
 
+func heal(amount: float) -> void:
+	var new_health = health + amount
+	
+	if new_health >= MAX_HEALTH:
+		health = MAX_HEALTH
+	else:
+		health = new_health 
+
 func damage(attack: Attack) -> void:
 	lost_health.emit(attack.damage)
 	
 	var dmg_inst: DamageIndicator = damage_indicator.instantiate()
 	var dmg_pos = global_position
-	dmg_pos.y -= 400
+	dmg_pos.y -= 600
 	dmg_inst.global_position = dmg_pos
 	dmg_inst.damage = attack.damage
 	
