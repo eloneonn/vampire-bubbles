@@ -6,6 +6,9 @@ extends CharacterBody2D
 @onready var timer: Timer = $Timer
 @onready var enemy_spawner: EnemySpawner = $EnemySpawner
 
+var orbit_modifier = 0
+var orbit_increasing = true
+
 @export var spawn_interval: float = 0.5
 var angle = 0.0
 var SPEED = 1200
@@ -31,5 +34,16 @@ func _physics_process(delta):
 	elif player:
 		var player_node = get_node(player)
 		angle += orbit_speed * delta
-		var offset = Vector2(cos(angle), sin(angle)) * orbit_radius
+		var offset = Vector2(cos(angle), sin(angle)) * (orbit_radius + orbit_modifier)
 		global_position = player_node.global_position + offset
+		if orbit_modifier < 100 and orbit_increasing == true:
+			orbit_modifier += 5
+			if orbit_modifier >= 100:
+				orbit_increasing = false
+				
+		if orbit_modifier > -100 and orbit_increasing == false:
+			orbit_modifier -= 5
+			if orbit_modifier <= -100:
+				orbit_increasing = true
+
+		
