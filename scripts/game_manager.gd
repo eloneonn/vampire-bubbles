@@ -1,16 +1,18 @@
 extends Node
 
 @onready var timer: Timer = Timer.new()
-var game_duration: float = 60
+var game_duration: float = 30
 var two_player_game: bool = false
 
 signal game_ended
 signal victory
 
+func _ready():
+	add_child(timer)
+
 func start_game():
 	timer.wait_time = game_duration
 	timer.one_shot = true
-	add_child(timer)
 	timer.timeout.connect(self._on_timer_timeout)
 	timer.start()
 
@@ -35,7 +37,7 @@ func get_time_float():
 		return 0.0
 
 func get_progress():
-	return timer.time_left / game_duration * 100
+	return abs(timer.time_left - game_duration) / game_duration 
 
 func _on_timer_timeout():
 	victory.emit()

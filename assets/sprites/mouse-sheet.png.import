@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bilm8uk41sim7"
-path="res://.godot/imported/VB_FurBall.png-717c8dcc4e9e8b01ee04f1dbfe38eb7a.ctex"
+uid="uid://dhug5u4msb38i"
+path="res://.godot/imported/mouse-sheet.png-c0b0a21cb6afc21629d57e507b2b70b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/VB_FurBall.png"
-dest_files=["res://.godot/imported/VB_FurBall.png-717c8dcc4e9e8b01ee04f1dbfe38eb7a.ctex"]
+source_file="res://assets/sprites/mouse-sheet.png"
+dest_files=["res://.godot/imported/mouse-sheet.png-c0b0a21cb6afc21629d57e507b2b70b2.ctex"]
 
 [params]
 

@@ -1,30 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb1g5pqn04cbd"]
+[gd_scene load_steps=11 format=3 uid="uid://bb1g5pqn04cbd"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_b2k88"]
-[ext_resource type="Texture2D" uid="uid://0yj0bpe8q80x" path="res://icon.svg" id="2_hecgj"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_xnyqi"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_4xbm4"]
+[ext_resource type="Texture2D" uid="uid://dhug5u4msb38i" path="res://assets/sprites/mouse-sheet.png" id="4_dchsy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u06k5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8b3g"]
 radius = 60.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t03w"]
+atlas = ExtResource("4_dchsy")
+region = Rect2(0, 0, 123, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jclxi"]
+atlas = ExtResource("4_dchsy")
+region = Rect2(123, 0, 123, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tn6c"]
+atlas = ExtResource("4_dchsy")
+region = Rect2(246, 0, 123, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jrgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t03w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jclxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tn6c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Enemy1" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_b2k88")
-orbit_radius = 1000.0
 orbit_speed = 2.0
-spawn_interval = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u06k5")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0, 1)
-texture = ExtResource("2_hecgj")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -36,5 +59,9 @@ shape = SubResource("CircleShape2D_f8b3g")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="EnemySpawner" type="Node" parent="."]
+[node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("4_4xbm4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8jrgm")
+frame_progress = 0.623324
