@@ -13,6 +13,7 @@ radius = 60.0
 [node name="Enemy1" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 4
+motion_mode = 1
 script = ExtResource("1_b2k88")
 orbit_radius = 1000.0
 
