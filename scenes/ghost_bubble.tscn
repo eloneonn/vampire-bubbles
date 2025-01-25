@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://4stwgyr44k64"]
+[gd_scene load_steps=11 format=3 uid="uid://ddtnackwo07ij"]
 
 [ext_resource type="Script" path="res://scripts/ghost_bubble.gd" id="1_0nxrg"]
 [ext_resource type="Texture2D" uid="uid://ck5boet6w7704" path="res://assets/sprites/BUBBLE Ghost.png" id="2_hwdug"]
@@ -34,7 +34,7 @@ texture = ExtResource("2_hwdug")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kkpxv")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node2D" parent="."]
 script = ExtResource("3_3bbvq")
 MAX_HEALTH = 20.0
 
@@ -61,3 +61,4 @@ libraries = {
 }
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]
