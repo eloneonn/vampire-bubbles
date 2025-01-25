@@ -8,6 +8,7 @@ const speed = 700.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthBar
+@onready var xp_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPBar
 
 var is_moving: bool = false  # Track movement
 
@@ -16,6 +17,7 @@ func _ready():
 	health_bar.max_value = health.MAX_HEALTH  # Set max health for the bar
 	health_bar.value = health.health  # Initialize health bar
 	xp_label.text = str(PlayerManager.experience)
+	PlayerManager.xp_changed.connect(_on_xp_change)
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Input.get_vector("left", "right", "up", "down")
@@ -44,3 +46,6 @@ func _on_health_lost_health(amount: float) -> void:
 
 func _on_hitbox_hit() -> void:
 	animated_sprite_2d.play("claw")
+
+func _on_xp_change(xp: float) -> void:
+	xp_bar.value = xp

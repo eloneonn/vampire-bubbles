@@ -152,11 +152,10 @@ text = "perkele
 "
 horizontal_alignment = 1
 
-[node name="HealthLable" type="Label" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-vertical_alignment = 1
-
 [node name="XPLable" type="Label" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="XPBar" type="ProgressBar" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
