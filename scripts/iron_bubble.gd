@@ -4,6 +4,10 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var hitbox: Hitbox = $Hitbox
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+const pop_sound = preload("res://assets/sfx/bubble3.wav")
+const clang_sound = preload("res://assets/sfx/steelbubble.wav")
 
 const SPEED = 100.0
 
@@ -20,6 +24,9 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _on_health_health_depleted() -> void:
+	audio_stream_player_2d.stream = pop_sound
+	audio_stream_player_2d.play()
+	
 	PlayerManager.add_experience(1)
 	PlayerManager.add_kill(1)
 	
@@ -28,3 +35,8 @@ func _on_health_health_depleted() -> void:
 	await get_tree().create_timer(0.9).timeout
 	
 	queue_free()
+
+
+func _on_health_lost_health(amount: float) -> void:
+	audio_stream_player_2d.stream = clang_sound
+	audio_stream_player_2d.play()
