@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=40 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
 [ext_resource type="Texture2D" uid="uid://bwu8l5g5tleja" path="res://assets/sprites/character.png" id="2_nnqnq"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cu68inninusa2" path="res://assets/sprites/character walk.png" id="9_iwlcg"]
 [ext_resource type="Script" path="res://scripts/weapon_type.gd" id="11_jmj4k"]
 [ext_resource type="Texture2D" uid="uid://w0kkfm4pwnpl" path="res://assets/sprites/VB_TailWhip.png" id="11_tgftn"]
+[ext_resource type="Script" path="res://scripts/proejctile_weapon.gd" id="13_mvsuu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_op8pd"]
 
@@ -199,6 +200,13 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="Resource" id="Resource_6f5nn"]
+script = ExtResource("11_jmj4k")
+damage = 0.0
+speed = 1.0
+duration = 0.0
+animation = ""
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_4k555")
@@ -345,6 +353,10 @@ animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, 140)
 flip_v = true
+
+[node name="Projectile_Weapon" type="Node2D" parent="."]
+script = ExtResource("13_mvsuu")
+weapon_type = SubResource("Resource_6f5nn")
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]

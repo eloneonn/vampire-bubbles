@@ -30,6 +30,8 @@ func update_direction() -> void:
 		velocity = direction * SPEED
 
 func _on_health_health_depleted() -> void:
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
 	audio_stream_player_2d.stream = pop_sound
 	audio_stream_player_2d.play()
 	
@@ -46,5 +48,7 @@ func _on_health_health_depleted() -> void:
 	queue_free()
 
 func _on_health_lost_health(amount: float) -> void:
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
 	audio_stream_player_2d.stream = clang_sound
 	audio_stream_player_2d.play()

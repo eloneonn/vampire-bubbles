@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://v6p21tjcsh1r"]
+[gd_scene load_steps=8 format=3 uid="uid://biokkhu24nl1w"]
 
 [ext_resource type="Script" path="res://scenes/furball.gd" id="1_ct25k"]
 [ext_resource type="Texture2D" uid="uid://bilm8uk41sim7" path="res://assets/sprites/VB_FurBall.png" id="2_ahw24"]
@@ -30,6 +30,7 @@ animations = [{
 }]
 
 [node name="Furball" type="Node2D"]
+scale = Vector2(-1, -1)
 script = ExtResource("1_ct25k")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
@@ -44,3 +45,7 @@ sprite_frames = SubResource("SpriteFrames_qm0m1")
 autoplay = "default"
 frame = 1
 frame_progress = 0.38931
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
