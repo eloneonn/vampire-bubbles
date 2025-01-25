@@ -1,22 +1,27 @@
 class_name Weapon extends Node2D
 
-@export var weapon_type: WeaponType = WeaponType.new()
+@export var weapon_type: WeaponType
 @export var hitbox: Hitbox
-@onready var timer: Timer = $Timer
+@onready var timer: Timer = Timer.new()
+@export var enabled: bool
 
-signal attack(weapon_type: WeaponType)
+signal attack()
 
 func _ready() -> void:
 	timer.wait_time = weapon_type.speed 
+	hitbox.damage = weapon_type.damage
+	
+	add_child(timer)
 	timer.one_shot = false
 	timer.connect("timeout", perform_attack)
 	timer.start()
-	hitbox.damage = weapon_type.damage
 
-func _process(delta: float) -> void:
-	pass
-
-# Called every x seconds
 func perform_attack() -> void:
-	attack.emit(weapon_type)
+	if !enabled:
+		return
+	
+	attack.emit()
 	hitbox.enable_for(weapon_type.duration)
+
+func increase_size():
+	pass

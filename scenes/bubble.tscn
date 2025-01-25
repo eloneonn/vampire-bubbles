@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8soi2nqpll22"]
+[gd_scene load_steps=9 format=3 uid="uid://brcuxf7gihes6"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_78a5o"]
 [ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="2_d50a0"]
@@ -31,7 +31,7 @@ shape = SubResource("CircleShape2D_kkpxv")
 script = ExtResource("3_qvq7t")
 MAX_HEALTH = 10.0
 
-[node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 3
 script = ExtResource("4_jwe78")
 permanent = true
