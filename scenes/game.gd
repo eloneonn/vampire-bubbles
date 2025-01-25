@@ -121,7 +121,7 @@ func get_card_path(upgrade: Enums.Upgrade):
 		Enums.Upgrade.CLAW_SPEED:
 			return preload("res://assets/sprites/cards/cardclaw2.png")
 		Enums.Upgrade.CLAW_SIZE:
-			print("cardclaw3.png")
+			return preload("res://assets/sprites/cards/cardclaw3.png")
 		Enums.Upgrade.TAILWHIP:
 			return preload("res://assets/sprites/cards/cardtailwip1.png")
 		Enums.Upgrade.TAILWHIP_DMG:
@@ -129,13 +129,13 @@ func get_card_path(upgrade: Enums.Upgrade):
 		Enums.Upgrade.TAILWHIP_SPEED:
 			return preload("res://assets/sprites/cards/cardtailwip3.png")
 		Enums.Upgrade.TAILWHIP_SIZE:
-			print("cardtailwip4.png")
+			return preload("res://assets/sprites/cards/cardtailwip4.png")
 		Enums.Upgrade.FURBALL:
 			return preload("res://assets/sprites/cards/cardfurball1.png")
 		Enums.Upgrade.FURBALL_DMG:
 			return preload("res://assets/sprites/cards/cardfurball2.png")
 		Enums.Upgrade.FURBALL_SPEED:
-			print("cardfurball4.png")
+			return preload("res://assets/sprites/cards/cardfurball4.png")
 		Enums.Upgrade.FURBALL_PROJECTILE:
 			return preload("res://assets/sprites/cards/cardfurball3.png")
 
