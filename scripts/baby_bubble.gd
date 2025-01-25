@@ -32,6 +32,6 @@ func _on_health_health_depleted() -> void:
 	audio_stream_player_2d.stream = pop_sound
 	audio_stream_player_2d.play()
 	
-	PlayerManager.add_experience(1)
+	PlayerManager.add_experience(GameManager.baby_bubble_xp)
 	PlayerManager.add_kill(1)
 	queue_free()
