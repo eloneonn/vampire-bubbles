@@ -177,18 +177,19 @@ health = NodePath("../Health")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_ttltg")
 
-[node name="Weapon" type="Node" parent="."]
+[node name="Weapon" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("5_8vkx0")
 weapon_type = ExtResource("6_e0ft5")
+hitbox = NodePath("ClawHitbox")
 
 [node name="Timer" type="Timer" parent="Weapon"]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="ClawHitbox" type="Area2D" parent="Weapon"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_owscx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/ClawHitbox"]
 position = Vector2(250, 0)
 shape = SubResource("RectangleShape2D_ep6i8")
 
@@ -207,4 +208,5 @@ libraries = {
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]
-[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="attack" from="Weapon" to="." method="_on_weapon_attack"]
+[connection signal="hit" from="Weapon/ClawHitbox" to="." method="_on_hitbox_hit"]
