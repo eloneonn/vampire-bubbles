@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs7afodpendgk"]
+
+[ext_resource type="Texture2D" uid="uid://cu5q1k37if3rn" path="res://assets/backgrounds/Walls/WallCorner.png" id="1_mfd86"]
+[ext_resource type="Texture2D" uid="uid://dgbk4kcx1lqqs" path="res://assets/backgrounds/Walls/WallHorizontal.png" id="2_58ggs"]
+[ext_resource type="Texture2D" uid="uid://dy45rjjfaexdc" path="res://assets/backgrounds/Walls/WallVertical.png" id="3_aiqcj"]
+[ext_resource type="Texture2D" uid="uid://70st8rbl4g00" path="res://assets/backgrounds/tile4.png" id="4_ua4gg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rfqt1"]
+distance = -2468.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y33lr"]
+normal = Vector2(0, 1)
+distance = -532.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3mwfk"]
+normal = Vector2(1, 0)
+distance = -1420.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7wcj0"]
+normal = Vector2(-1, 0)
+distance = -3565.0
+
+[node name="Map" type="StaticBody2D"]
+
+[node name="Walls Sprites" type="Node2D" parent="."]
+position = Vector2(-1449, -560)
+
+[node name="WallCorner" type="Sprite2D" parent="Walls Sprites"]
+texture = ExtResource("1_mfd86")
+
+[node name="WallHorizontal6" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(529, 3051.5)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal7" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(1529, 3051.5)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal8" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(2529, 3051.5)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal9" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(3529, 3051.5)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal10" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(4510, 3051.5)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(530, 4)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal2" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(1530, 4)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal3" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(2530, 4)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal4" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(3530, 4)
+texture = ExtResource("2_58ggs")
+
+[node name="WallHorizontal5" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(4511, 4)
+texture = ExtResource("2_58ggs")
+
+[node name="WallCorner2" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(5039, -1)
+rotation = 1.5708
+texture = ExtResource("1_mfd86")
+
+[node name="WallVertical4" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(4.5, 529)
+texture = ExtResource("3_aiqcj")
+
+[node name="WallVertical5" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(4.5, 1528)
+texture = ExtResource("3_aiqcj")
+
+[node name="WallVertical6" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(4.5, 2527)
+texture = ExtResource("3_aiqcj")
+
+[node name="WallVertical" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(5037, 528)
+texture = ExtResource("3_aiqcj")
+
+[node name="WallVertical2" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(5037, 1527)
+texture = ExtResource("3_aiqcj")
+
+[node name="WallVertical3" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(5037, 2526)
+texture = ExtResource("3_aiqcj")
+
+[node name="WallCorner3" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(5040, 3055)
+rotation = -3.14159
+texture = ExtResource("1_mfd86")
+
+[node name="WallCorner4" type="Sprite2D" parent="Walls Sprites"]
+position = Vector2(0, 3055)
+rotation = -1.5708
+texture = ExtResource("1_mfd86")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("4_ua4gg")
+texture_rotation = -0.436332
+polygon = PackedVector2Array(-1443, -553, -1421, 2490, 3591, 2484, 3584, -542)
+
+[node name="Lower" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_rfqt1")
+
+[node name="Up" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_y33lr")
+
+[node name="Left" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_3mwfk")
+
+[node name="Right" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_7wcj0")

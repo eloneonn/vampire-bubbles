@@ -5,6 +5,10 @@ class_name Hitbox extends Area2D
 @export var damage: float = 10
 @export var enabled: bool = true
 
+var claw_sound = preload("res://assets/sfx/claw.wav")
+var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
+var furball_sound = preload("res://assets/sfx/cough.wav")
+
 signal hit
 
 func _ready() -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
 [ext_resource type="PackedScene" uid="uid://bb1g5pqn04cbd" path="res://scenes/enemy_1.tscn" id="3_katr8"]
-[ext_resource type="Texture2D" uid="uid://70st8rbl4g00" path="res://assets/backgrounds/tile4.png" id="4_oiyq3"]
+[ext_resource type="PackedScene" uid="uid://bs7afodpendgk" path="res://scenes/map.tscn" id="4_eut1i"]
 
 [sub_resource type="GDScript" id="GDScript_okrbu"]
 script/source = "extends Button
@@ -23,18 +23,14 @@ func _process(delta: float) -> void:
 script = ExtResource("1_imjcd")
 
 [node name="Player" parent="." instance=ExtResource("1_id7p0")]
+position = Vector2(1075, 1020)
 scale = Vector2(0.991383, 1)
 
 [node name="Enemy1" parent="." instance=ExtResource("3_katr8")]
 position = Vector2(496, -239)
 player = NodePath("../Player")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-z_index = -10
-texture_repeat = 2
-texture = ExtResource("4_oiyq3")
-texture_rotation = -0.253073
-polygon = PackedVector2Array(-4386, 3733, -5302, -3157, 6704, -3575, 6110, 4515)
+[node name="Map" parent="." instance=ExtResource("4_eut1i")]
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 visible = false
@@ -184,9 +180,55 @@ text = "Continue"
 layout_mode = 2
 text = "Back to menu"
 
+[node name="UpgradeScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="UpgradeScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="CenterContainer" type="CenterContainer" parent="UpgradeScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreen/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UpgradeScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Pick an upgrade!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UpgradeButton1" type="TextureButton" parent="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeButton2" type="TextureButton" parent="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeButton3" type="TextureButton" parent="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [connection signal="pressed" from="GameOverScreen/CenterContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/CenterContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/CenterContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="toggled" from="MainMenu/MarginContainer/CenterContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer/UpgradeButton1" to="." method="_on_upgrade_button_1_pressed"]
+[connection signal="pressed" from="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer/UpgradeButton2" to="." method="_on_upgrade_button_2_pressed"]
+[connection signal="pressed" from="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer/UpgradeButton3" to="." method="_on_upgrade_button_3_pressed"]

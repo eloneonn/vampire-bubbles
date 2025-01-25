@@ -3,11 +3,20 @@ extends CharacterBody2D
 const speed = 700.0
 @onready var health: Health = $Health
 @onready var time_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/TimerLable
-@onready var animated_sprite_2d: AnimatedSprite2D = $WeaponAnimations
 @onready var health_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthBar
 @onready var xp_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPBar
 @onready var player_animations: AnimatedSprite2D = $PlayerAnimations
 @onready var claw: Weapon = $Claw
+@onready var claw_animations: AnimatedSprite2D = $Claw/ClawAnimations
+@onready var tail_whip_animations: AnimatedSprite2D = $TailWhip/TailWhipAnimations
+@onready var tail_whip: Weapon = $TailWhip
+@onready var furball: Projectile_Weapon = $Projectile_Weapon
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+var claw_sound = preload("res://assets/sfx/claw.wav")
+var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
+var furball_sound = preload("res://assets/sfx/cough.wav")
 
 var is_moving: bool = false  # Track movement
 
@@ -32,10 +41,10 @@ func _physics_process(delta: float) -> void:
 	if is_moving:
 		player_animations.play("walk")
 		claw.rotation = velocity.angle()
-		animated_sprite_2d.rotation = velocity.angle()
+		tail_whip.rotation = velocity.angle()
 	else:
 		player_animations.play("idle")
-		
+	
 	move_and_slide()
 
 func _on_health_health_depleted() -> void:
@@ -45,57 +54,56 @@ func _process(delta: float) -> void:
 	time_label.text = "Time left " + GameManager.get_time()
 
 func _on_health_lost_health(amount: float) -> void:
-	# animation_player.play("hit")
+	animation_player.play("flash")
 	health_bar.value = health.health  # Update health bar when damaged
-
-
-func _on_hitbox_hit() -> void:
-	animated_sprite_2d.play("claw")
 
 func _on_xp_change(xp: float) -> void:
 	xp_bar.value = xp
-func _on_weapon_attack(weapon_type: WeaponType) -> void:
-	animated_sprite_2d.play(weapon_type.animation)
 
 func on_upgrade_receive(upgrade: Enums.Upgrade):
-	var healing = 0
-	if upgrade == Enums.Upgrade.HEAL_MINOR:
-		healing = 25
-	elif upgrade == Enums.Upgrade.HEAL_MINOR:
-		healing = 50
-	elif upgrade == Enums.Upgrade.HEAL_MINOR:
-		healing = 75
-	
-	if healing != 0:
-		var new_health = health.health + healing
-		
-		if new_health >= PlayerManager.max_health:
-			health.health = PlayerManager.max_health
-		else:
-			health.health = new_health 
-		
-		return
-	
 	match upgrade:
+		Enums.Upgrade.HEAL_MINOR:
+			health.heal(25)
+		Enums.Upgrade.HEAL_MID:
+			health.heal(50)
+		Enums.Upgrade.HEAL_MAJOR:
+			health.heal(75)
 		Enums.Upgrade.CLAW_DMG:
-			print("param3 is 3!")
+			claw.damage += claw.damage * 0.25
 		Enums.Upgrade.CLAW_SPEED:
-			print("param3 is not 3!")
-		Enums.Upgrade.CLAW_SIZE:
-			print("param3 is not 3!")
+			claw.speed += claw.speed * -0.25
+		#Enums.Upgrade.CLAW_SIZE:
 		Enums.Upgrade.TAILWHIP:
-			print("param3 is not 3!")
+			tail_whip.enabled = true
 		Enums.Upgrade.TAILWHIP_DMG:
-			print("param3 is not 3!")
+			tail_whip.damage += tail_whip.damage * 0.25
 		Enums.Upgrade.TAILWHIP_SPEED:
-			print("param3 is not 3!")
-		Enums.Upgrade.TAILWHIP_SIZE:
-			print("param3 is not 3!")
+			tail_whip.speed += tail_whip.speed * 0.25
+		#Enums.Upgrade.TAILWHIP_SIZE:
 		Enums.Upgrade.FURBALL:
-			print("param3 is not 3!")
+			furball.enabled = true
 		Enums.Upgrade.FURBALL_DMG:
-			print("param3 is not 3!")
+			furball.damage += furball.damage * 0.25
 		Enums.Upgrade.FURBALL_SPEED:
-			print("param3 is not 3!")
+			furball.speed += furball.speed * 0.25
 		Enums.Upgrade.FURBALL_PROJECTILE:
-			print("param3 is not 3!")
+			furball.amount_of_projectiles = furball.amount_of_projectiles + 1
+
+func _on_claw_attack() -> void:
+	claw_animations.play("claw")
+	
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
+	audio_stream_player_2d.stream = claw_sound
+	audio_stream_player_2d.play()
+
+func _on_tail_whip_attack() -> void:
+	tail_whip_animations.play("hit")
+	
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
+	audio_stream_player_2d.stream = tailwhip_sound
+	audio_stream_player_2d.play()
+
+func _on_health_gained_health() -> void:
+	health_bar.value = health.health

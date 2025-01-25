@@ -4,6 +4,10 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var hitbox: Hitbox = $Hitbox
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+const pop_sound = preload("res://assets/sfx/bubble3.wav")
+const ow_sound = preload("res://assets/sfx/ghostbubble.wav")
 
 const SPEED = 100.0
 const WAVE_AMPLITUDE = 300.0  # How far the enemy sways
@@ -29,7 +33,12 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _on_health_health_depleted() -> void:
-	PlayerManager.add_experience(1)
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
+	audio_stream_player_2d.stream = pop_sound
+	audio_stream_player_2d.play()
+	
+	PlayerManager.add_experience(GameManager.ghost_bubble_xp)
 	PlayerManager.add_kill(1)
 	
 	sprite_2d.visible = false
@@ -41,6 +50,11 @@ func _on_health_health_depleted() -> void:
 
 
 func _on_health_lost_health(amount: float) -> void:
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
+	audio_stream_player_2d.stream = ow_sound
+	audio_stream_player_2d.play()
+	
 	var damage_indicator = preload("res://scenes/DamageIndicator.tscn")
 	
 	var dmg_inst: DamageIndicator = damage_indicator.instantiate()

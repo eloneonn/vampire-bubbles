@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=46 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
+[ext_resource type="Texture2D" uid="uid://6kpvi5x7vyc4" path="res://assets/sprites/PlayerShadow.png" id="2_lh0nq"]
 [ext_resource type="Texture2D" uid="uid://bwu8l5g5tleja" path="res://assets/sprites/character.png" id="2_nnqnq"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="2_pjiqv"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_yall3"]
@@ -10,7 +11,10 @@
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="7_owscx"]
 [ext_resource type="Texture2D" uid="uid://obw0wqu0iqg0" path="res://assets/sprites/VB_ClawAttack.png" id="8_mcbey"]
 [ext_resource type="Texture2D" uid="uid://cu68inninusa2" path="res://assets/sprites/character walk.png" id="9_iwlcg"]
+[ext_resource type="Shader" uid="uid://bfvit0y2gff5w" path="res://assets/Materials/Flash.tres" id="10_2ym3i"]
+[ext_resource type="Script" path="res://scripts/weapon_type.gd" id="11_jmj4k"]
 [ext_resource type="Texture2D" uid="uid://w0kkfm4pwnpl" path="res://assets/sprites/VB_TailWhip.png" id="11_tgftn"]
+[ext_resource type="Script" path="res://scripts/proejctile_weapon.gd" id="13_mvsuu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_op8pd"]
 
@@ -77,6 +81,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijma6"]
+shader = ExtResource("10_2ym3i")
+shader_parameter/BooleanParameter = false
+shader_parameter/Tint = Color(1, 1, 1, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kuoak"]
 atlas = ExtResource("2_nnqnq")
 region = Rect2(0, 0, 102, 84)
@@ -125,61 +134,122 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fq638"]
+[sub_resource type="Resource" id="Resource_1w8a6"]
+script = ExtResource("11_jmj4k")
+damage = 20.0
+speed = 2.0
+duration = 0.2
+animation = ""
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2jh8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su5xx"]
 atlas = ExtResource("11_tgftn")
 region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n1hhq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq046"]
 atlas = ExtResource("11_tgftn")
 region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccqb5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y7cn"]
 atlas = ExtResource("11_tgftn")
 region = Rect2(1024, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbtoo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g35s"]
 atlas = ExtResource("11_tgftn")
 region = Rect2(1536, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3qgpn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2oiu"]
 atlas = ExtResource("11_tgftn")
 region = Rect2(2048, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wq73q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_di7fe"]
 atlas = ExtResource("11_tgftn")
 region = Rect2(2560, 0, 512, 512)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xks1n"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rnk6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fq638")
+"texture": SubResource("AtlasTexture_su5xx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n1hhq")
+"texture": SubResource("AtlasTexture_uq046")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ccqb5")
+"texture": SubResource("AtlasTexture_6y7cn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mbtoo")
+"texture": SubResource("AtlasTexture_4g35s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3qgpn")
+"texture": SubResource("AtlasTexture_x2oiu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wq73q")
+"texture": SubResource("AtlasTexture_di7fe")
 }, {
 "duration": 1.0,
 "texture": null
 }],
 "loop": false,
-"name": &"default",
+"name": &"hit",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
 }]
+
+[sub_resource type="Resource" id="Resource_6f5nn"]
+script = ExtResource("11_jmj4k")
+damage = 0.0
+speed = 2.0
+duration = 0.0
+animation = ""
+
+[sub_resource type="Animation" id="Animation_x1cc1"]
+resource_name = "flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimations:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.117111),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jqiuy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimations:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4m6q2"]
+_data = {
+"RESET": SubResource("Animation_jqiuy"),
+"flash": SubResource("Animation_x1cc1")
+}
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -188,8 +258,16 @@ script = ExtResource("1_4k555")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_op8pd")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lh0nq")
+offset = Vector2(0, 44)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+limit_left = -1470
+limit_top = -582
+limit_right = 3613
+limit_bottom = 2517
 position_smoothing_enabled = true
 
 [node name="HUD" type="CanvasLayer" parent="Camera2D"]
@@ -278,6 +356,7 @@ shape = SubResource("CircleShape2D_ttltg")
 script = ExtResource("5_8vkx0")
 weapon_type = ExtResource("6_e0ft5")
 hitbox = NodePath("ClawHitbox")
+enabled = true
 
 [node name="Timer" type="Timer" parent="Claw"]
 
@@ -290,7 +369,7 @@ script = ExtResource("7_owscx")
 position = Vector2(91, 0)
 shape = SubResource("RectangleShape2D_ep6i8")
 
-[node name="WeaponAnimations" type="AnimatedSprite2D" parent="."]
+[node name="ClawAnimations" type="AnimatedSprite2D" parent="Claw"]
 scale = Vector2(0.5, 0.502247)
 sprite_frames = SubResource("SpriteFrames_dy7lm")
 animation = &"claw"
@@ -299,27 +378,48 @@ offset = Vector2(250, 0)
 flip_h = true
 
 [node name="PlayerAnimations" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ijma6")
 sprite_frames = SubResource("SpriteFrames_kwj7x")
 animation = &"idle"
-frame_progress = 1.0
 flip_h = true
 
-[node name="TailWhip" type="Node2D" parent="."]
+[node name="TailWhip" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]
+script = ExtResource("5_8vkx0")
+weapon_type = SubResource("Resource_1w8a6")
+hitbox = NodePath("Hitbox")
 
 [node name="Hitbox" type="Area2D" parent="TailWhip"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("7_owscx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TailWhip/Hitbox"]
+position = Vector2(-142, 3)
+scale = Vector2(-14.9426, 15.4749)
+shape = SubResource("CapsuleShape2D_2jh8i")
 
-[node name="TailWhipAnimation" type="AnimatedSprite2D" parent="."]
-rotation = -1.5708
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_xks1n")
-frame = 7
-frame_progress = 1.0
-offset = Vector2(0, -120)
+[node name="TailWhipAnimations" type="AnimatedSprite2D" parent="TailWhip"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_6rnk6")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, 140)
+flip_v = true
 
+[node name="Projectile_Weapon" type="Node2D" parent="."]
+script = ExtResource("13_mvsuu")
+weapon_type = SubResource("Resource_6f5nn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4m6q2")
+}
+
+[connection signal="gained_health" from="Health" to="." method="_on_health_gained_health"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]
-[connection signal="attack" from="Claw" to="." method="_on_weapon_attack"]
+[connection signal="attack" from="Claw" to="." method="_on_claw_attack"]
 [connection signal="hit" from="Claw/ClawHitbox" to="." method="_on_hitbox_hit"]
+[connection signal="attack" from="TailWhip" to="." method="_on_tail_whip_attack"]

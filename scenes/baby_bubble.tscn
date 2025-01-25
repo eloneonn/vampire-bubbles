@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://cuvsjvmdmmmyy"]
+[gd_scene load_steps=11 format=3 uid="uid://cuvsjvmdmmmyy"]
 
 [ext_resource type="Script" path="res://scripts/baby_bubble.gd" id="1_qxy7b"]
-[ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="2_qpavq"]
+[ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_aipwr"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_6i7yo"]
+[ext_resource type="Texture2D" uid="uid://j6siwrwncp2i" path="res://assets/sprites/bubblegum.png" id="3_7xfmp"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_6ltoh"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_re5w6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_reaef"]
+resource_local_to_scene = true
+shader = ExtResource("2_aipwr")
+shader_parameter/time_offset = null
+shader_parameter/time_speed = 3.2
+shader_parameter/scale_y = 1.066
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xoncb"]
 radius = 40.0
@@ -18,10 +26,10 @@ radius = 45.0
 [node name="BabyBubble" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_qxy7b")
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["enemies"]]
-modulate = Color(1, 0, 1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_reaef")
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_qpavq")
+texture = ExtResource("3_7xfmp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -31,7 +39,7 @@ shape = SubResource("CircleShape2D_xoncb")
 script = ExtResource("3_6i7yo")
 MAX_HEALTH = 20.0
 
-[node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 3
 script = ExtResource("4_6ltoh")
 permanent = true
@@ -49,5 +57,7 @@ health = NodePath("../Health")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_gb3d6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
