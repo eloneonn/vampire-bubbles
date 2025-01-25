@@ -9,6 +9,7 @@ func _ready() -> void:
 	timer.one_shot = false
 	timer.connect("timeout", perform_attack)
 	timer.start()
+	hitbox.damage = weapon_type.damage
 
 func _process(delta: float) -> void:
 	pass
