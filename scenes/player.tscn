@@ -216,6 +216,10 @@ shape = SubResource("CircleShape2D_op8pd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+limit_left = -1470
+limit_top = -582
+limit_right = 3613
+limit_bottom = 2517
 position_smoothing_enabled = true
 
 [node name="HUD" type="CanvasLayer" parent="Camera2D"]
