@@ -4,6 +4,9 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hitbox: Hitbox = $Hitbox
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+const pop_sound = preload("res://assets/sfx/bubble1.wav")
 
 const SPEED = 200.0
 @export var update_interval: float = 0.5  # Time in seconds between AI updates
@@ -25,6 +28,9 @@ func update_direction() -> void:
 		velocity = direction * SPEED
 
 func _on_health_health_depleted() -> void:
+	audio_stream_player_2d.stream = pop_sound
+	audio_stream_player_2d.play()
+	
 	PlayerManager.add_experience(1)
 	PlayerManager.add_kill(1)
 	sprite_2d.visible = false

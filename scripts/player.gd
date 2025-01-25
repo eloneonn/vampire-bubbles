@@ -3,11 +3,13 @@ extends CharacterBody2D
 const speed = 700.0
 @onready var health: Health = $Health
 @onready var time_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/TimerLable
-@onready var animated_sprite_2d: AnimatedSprite2D = $WeaponAnimations
 @onready var health_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthBar
 @onready var xp_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPBar
-@onready var weapon: Weapon = $Weapon
 @onready var player_animations: AnimatedSprite2D = $PlayerAnimations
+@onready var claw: Weapon = $Claw
+@onready var claw_animations: AnimatedSprite2D = $Claw/ClawAnimations
+@onready var tail_whip_animations: AnimatedSprite2D = $TailWhip/TailWhipAnimations
+@onready var tail_whip: Weapon = $TailWhip
 
 var is_moving: bool = false  # Track movement
 
@@ -16,6 +18,7 @@ func _ready():
 	health_bar.max_value = health.MAX_HEALTH  # Set max health for the bar
 	health_bar.value = health.health  # Initialize health bar
 	PlayerManager.xp_changed.connect(_on_xp_change)
+	PlayerManager.received_upgrade.connect(on_upgrade_receive)
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Input.get_vector("left", "right", "up", "down")
@@ -30,11 +33,11 @@ func _physics_process(delta: float) -> void:
 	# Rotate hitbox only when moving
 	if is_moving:
 		player_animations.play("walk")
-		weapon.rotation = velocity.angle()
-		animated_sprite_2d.rotation = velocity.angle()
+		claw.rotation = velocity.angle()
+		tail_whip.rotation = velocity.angle()
 	else:
 		player_animations.play("idle")
-		
+	
 	move_and_slide()
 
 func _on_health_health_depleted() -> void:
@@ -47,11 +50,54 @@ func _on_health_lost_health(amount: float) -> void:
 	# animation_player.play("hit")
 	health_bar.value = health.health  # Update health bar when damaged
 
-
-func _on_hitbox_hit() -> void:
-	animated_sprite_2d.play("claw")
-
 func _on_xp_change(xp: float) -> void:
 	xp_bar.value = xp
-func _on_weapon_attack(weapon_type: WeaponType) -> void:
-	animated_sprite_2d.play(weapon_type.animation)
+
+func on_upgrade_receive(upgrade: Enums.Upgrade):
+	var healing = 0
+	if upgrade == Enums.Upgrade.HEAL_MINOR:
+		healing = 25
+	elif upgrade == Enums.Upgrade.HEAL_MINOR:
+		healing = 50
+	elif upgrade == Enums.Upgrade.HEAL_MINOR:
+		healing = 75
+	
+	if healing != 0:
+		var new_health = health.health + healing
+		
+		if new_health >= PlayerManager.max_health:
+			health.health = PlayerManager.max_health
+		else:
+			health.health = new_health 
+		
+		return
+	
+	match upgrade:
+		Enums.Upgrade.CLAW_DMG:
+			print("param3 is 3!")
+		Enums.Upgrade.CLAW_SPEED:
+			print("param3 is not 3!")
+		Enums.Upgrade.CLAW_SIZE:
+			print("param3 is not 3!")
+		Enums.Upgrade.TAILWHIP:
+			print("param3 is not 3!")
+		Enums.Upgrade.TAILWHIP_DMG:
+			print("param3 is not 3!")
+		Enums.Upgrade.TAILWHIP_SPEED:
+			print("param3 is not 3!")
+		Enums.Upgrade.TAILWHIP_SIZE:
+			print("param3 is not 3!")
+		Enums.Upgrade.FURBALL:
+			print("param3 is not 3!")
+		Enums.Upgrade.FURBALL_DMG:
+			print("param3 is not 3!")
+		Enums.Upgrade.FURBALL_SPEED:
+			print("param3 is not 3!")
+		Enums.Upgrade.FURBALL_PROJECTILE:
+			print("param3 is not 3!")
+
+func _on_claw_attack() -> void:
+	claw_animations.play("claw")
+
+func _on_tail_whip_attack() -> void:
+	tail_whip_animations.play("hit")
