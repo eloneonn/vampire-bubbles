@@ -10,7 +10,7 @@ const speed = 700.0
 @onready var claw_animations: AnimatedSprite2D = $Claw/ClawAnimations
 @onready var tail_whip_animations: AnimatedSprite2D = $TailWhip/TailWhipAnimations
 @onready var tail_whip: Weapon = $TailWhip
-@onready var furball = $Projectile_Weapon
+@onready var furball: Projectile_Weapon = $Projectile_Weapon
 
 var is_moving: bool = false  # Track movement
 
@@ -77,8 +77,9 @@ func on_upgrade_receive(upgrade: Enums.Upgrade):
 		Enums.Upgrade.FURBALL:
 			furball.enabled = true
 		Enums.Upgrade.FURBALL_DMG:
-			print("param3 is not 3!")
-		#Enums.Upgrade.FURBALL_SPEED:
+			furball.damage += furball.damage * 0.25
+		Enums.Upgrade.FURBALL_SPEED:
+			furball.speed += furball.speed * 0.25
 		Enums.Upgrade.FURBALL_PROJECTILE:
 			furball.amount_of_projectiles = furball.amount_of_projectiles + 1
 
