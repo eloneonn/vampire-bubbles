@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://datdxcfmn5fa8"]
+[gd_scene load_steps=11 format=3 uid="uid://datdxcfmn5fa8"]
 
 [ext_resource type="Script" path="res://scripts/iron_bubble.gd" id="1_y5i6j"]
 [ext_resource type="Texture2D" uid="uid://cvd4ubdi17tun" path="res://assets/sprites/bubblemetal.png" id="2_isrhc"]
+[ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_un767"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_oiyxy"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_hohud"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_7nugl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwb2h"]
+resource_local_to_scene = true
+shader = ExtResource("2_un767")
+shader_parameter/time_offset = null
+shader_parameter/time_speed = 3.2
+shader_parameter/scale_y = 1.066
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1gro2"]
 radius = 40.0
@@ -19,6 +27,7 @@ radius = 45.0
 script = ExtResource("1_y5i6j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gwb2h")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_isrhc")
 

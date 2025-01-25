@@ -1,10 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddtnackwo07ij"]
+[gd_scene load_steps=13 format=3 uid="uid://ddtnackwo07ij"]
 
 [ext_resource type="Script" path="res://scripts/ghost_bubble.gd" id="1_0nxrg"]
 [ext_resource type="Texture2D" uid="uid://ck5boet6w7704" path="res://assets/sprites/BUBBLE Ghost.png" id="2_hwdug"]
+[ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_x7svn"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_3bbvq"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_wqx5q"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_vfic8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b168w"]
+resource_local_to_scene = true
+shader = ExtResource("2_x7svn")
+shader_parameter/time_offset = null
+shader_parameter/time_speed = 3.2
+shader_parameter/scale_y = 1.066
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkpxv"]
 radius = 40.0
@@ -29,6 +37,7 @@ collision_mask = 0
 script = ExtResource("1_0nxrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_b168w")
 texture = ExtResource("2_hwdug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

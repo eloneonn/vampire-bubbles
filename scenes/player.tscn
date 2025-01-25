@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=28 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
 [ext_resource type="Texture2D" uid="uid://bwu8l5g5tleja" path="res://assets/sprites/character.png" id="2_nnqnq"]
@@ -10,8 +10,10 @@
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="7_owscx"]
 [ext_resource type="Texture2D" uid="uid://obw0wqu0iqg0" path="res://assets/sprites/VB_ClawAttack.png" id="8_mcbey"]
 [ext_resource type="Texture2D" uid="uid://cu68inninusa2" path="res://assets/sprites/character walk.png" id="9_iwlcg"]
+[ext_resource type="Texture2D" uid="uid://6kpvi5x7vyc4" path="res://assets/sprites/PlayerShadow.png" id="11_4mqsg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_op8pd"]
+radius = 48.28
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nn2cy"]
 radius = 400.0
@@ -245,6 +247,11 @@ flip_h = true
 sprite_frames = SubResource("SpriteFrames_kwj7x")
 animation = &"idle"
 frame_progress = 1.0
+
+[node name="PlayerShadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(4, 43)
+texture = ExtResource("11_4mqsg")
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]

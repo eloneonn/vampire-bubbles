@@ -38,6 +38,7 @@ func spawn_enemy():
 	var enemy = enemies.pick_random()
 	
 	var instance = enemy.instantiate()
+	instance.get_node("Sprite2D").material.set_shader_parameter("time_offset", randf_range(0.0, 10.0))
 	
 	instance.position = global_position
 	get_tree().root.add_child(instance)
