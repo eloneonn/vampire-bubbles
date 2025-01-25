@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://datdxcfmn5fa8"]
+[gd_scene load_steps=11 format=3 uid="uid://b0w8rkb05nhqd"]
 
 [ext_resource type="Script" path="res://scripts/iron_bubble.gd" id="1_y5i6j"]
 [ext_resource type="Texture2D" uid="uid://cvd4ubdi17tun" path="res://assets/sprites/bubblemetal.png" id="2_isrhc"]

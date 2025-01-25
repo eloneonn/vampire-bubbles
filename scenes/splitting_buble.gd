@@ -35,6 +35,8 @@ func _on_health_health_depleted() -> void:
 	
 
 func spawn_baby():
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
 	audio_stream_player_2d.stream = pop_sound
 	audio_stream_player_2d.play()
 	

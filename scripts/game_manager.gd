@@ -9,6 +9,9 @@ var two_player_game: bool = false
 signal game_ended
 signal victory
 
+var pitch_MAX = 1.3
+var pitch_MIN = 0.7
+
 func _ready():
 	add_child(timer)
 	add_child(cleanup_timer)
