@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j6siwrwncp2i"
-path="res://.godot/imported/bubblegum.png-ade8dc7f237b4e263143eed803c44464.ctex"
+uid="uid://cu68inninusa2"
+path="res://.godot/imported/character walk.png-371ff1d4cc8af9df1cc67a42b0a29e11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bubblegum.png"
-dest_files=["res://.godot/imported/bubblegum.png-ade8dc7f237b4e263143eed803c44464.ctex"]
+source_file="res://assets/sprites/character walk.png"
+dest_files=["res://.godot/imported/character walk.png-371ff1d4cc8af9df1cc67a42b0a29e11.ctex"]
 
 [params]
 

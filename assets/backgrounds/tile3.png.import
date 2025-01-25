@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j6siwrwncp2i"
-path="res://.godot/imported/bubblegum.png-ade8dc7f237b4e263143eed803c44464.ctex"
+uid="uid://dw8r868mggqvx"
+path="res://.godot/imported/tile3.png-726f9c6bc411d38869f75ab49c59e293.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bubblegum.png"
-dest_files=["res://.godot/imported/bubblegum.png-ade8dc7f237b4e263143eed803c44464.ctex"]
+source_file="res://assets/backgrounds/tile3.png"
+dest_files=["res://.godot/imported/tile3.png-726f9c6bc411d38869f75ab49c59e293.ctex"]
 
 [params]
 
