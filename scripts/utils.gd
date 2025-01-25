@@ -19,9 +19,3 @@ const TailWhipUpgrades: Array[Enums.Upgrade] = [
 const FurballUpgrades: Array[Enums.Upgrade] = [
 	Enums.Upgrade.FURBALL, Enums.Upgrade.FURBALL_DMG, Enums.Upgrade.FURBALL_PROJECTILE, #Enums.Upgrade.FURBALL_SPEED
 ]
-
-const Upgrades: Array[Enums.Upgrade] = [
-	Enums.Upgrade.CLAW_DMG, Enums.Upgrade.CLAW_SPEED, #Enums.Upgrade.CLAW_SIZE,
-	Enums.Upgrade.TAILWHIP_DMG, Enums.Upgrade.TAILWHIP_SPEED, #Enums.Upgrade.TAILWHIP_SIZE,
-	Enums.Upgrade.FURBALL_DMG, Enums.Upgrade.FURBALL_PROJECTILE, #Enums.Upgrade.FURBALL_SPEED, 
-]

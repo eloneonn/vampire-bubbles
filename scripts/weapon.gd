@@ -4,6 +4,7 @@ class_name Weapon extends Node2D
 @export var hitbox: Hitbox
 @onready var timer: Timer = Timer.new()
 @export var enabled: bool
+@onready var projectile_weapon: Projectile_Weapon = $"../Projectile_Weapon"
 
 @onready var damage: float = weapon_type.damage
 @onready var speed: float = weapon_type.speed

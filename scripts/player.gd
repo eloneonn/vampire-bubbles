@@ -11,6 +11,12 @@ const speed = 700.0
 @onready var tail_whip_animations: AnimatedSprite2D = $TailWhip/TailWhipAnimations
 @onready var tail_whip: Weapon = $TailWhip
 @onready var furball: Projectile_Weapon = $Projectile_Weapon
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+var claw_sound = preload("res://assets/sfx/claw.wav")
+var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
+var furball_sound = preload("res://assets/sfx/cough.wav")
 
 var is_moving: bool = false  # Track movement
 
@@ -48,7 +54,7 @@ func _process(delta: float) -> void:
 	time_label.text = "Time left " + GameManager.get_time()
 
 func _on_health_lost_health(amount: float) -> void:
-	# animation_player.play("hit")
+	animation_player.play("flash")
 	health_bar.value = health.health  # Update health bar when damaged
 
 func _on_xp_change(xp: float) -> void:
@@ -85,9 +91,19 @@ func on_upgrade_receive(upgrade: Enums.Upgrade):
 
 func _on_claw_attack() -> void:
 	claw_animations.play("claw")
+	
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
+	audio_stream_player_2d.stream = claw_sound
+	audio_stream_player_2d.play()
 
 func _on_tail_whip_attack() -> void:
 	tail_whip_animations.play("hit")
+	
+	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
+	audio_stream_player_2d.pitch_scale = random_pitch
+	audio_stream_player_2d.stream = tailwhip_sound
+	audio_stream_player_2d.play()
 
 func _on_health_gained_health() -> void:
 	health_bar.value = health.health
