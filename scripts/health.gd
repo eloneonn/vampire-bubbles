@@ -3,13 +3,11 @@ class_name Health extends Node
 @export var MAX_HEALTH: float = 100
 @onready var health: float = MAX_HEALTH
 
-var damage_indicator = load("res://scenes/DamageIndicator.tscn")
-
 signal health_depleted
-signal lost_health
+signal lost_health(amount: float)
 
 func damage(attack: Attack) -> void:
-	lost_health.emit()
+	lost_health.emit(attack.damage)
 	
 	var dmg_inst: DamageIndicator = damage_indicator.instantiate()
 	dmg_inst.global_position = get_parent().global_position
