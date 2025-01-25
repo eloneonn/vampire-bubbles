@@ -6,6 +6,7 @@ const speed = 500.0
 @onready var health_lable: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthLable
 @onready var hitbox: Hitbox = $Hitbox
 @onready var xp_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPLable
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready():
 	health.MAX_HEALTH = PlayerManager.max_health
@@ -27,3 +28,6 @@ func _process(delta: float) -> void:
 	health_lable.text = "HP " + str(health.health)
 	xp_label.text = "XP " + str(PlayerManager.experience)
 	pass
+
+func _on_health_lost_health() -> void:
+	animation_player.play("hit")
