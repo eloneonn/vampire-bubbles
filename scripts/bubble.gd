@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var hitbox: Hitbox = $Hitbox
 
 const SPEED = 200.0
-dw
+
 func _ready():
 	player = get_tree().get_nodes_in_group("player")[0]
 
