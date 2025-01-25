@@ -12,6 +12,7 @@ const speed = 700.0
 @onready var tail_whip: Weapon = $TailWhip
 @onready var furball: Projectile_Weapon = $Projectile_Weapon
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var claw_sound = preload("res://assets/sfx/claw.wav")
 var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
@@ -53,7 +54,7 @@ func _process(delta: float) -> void:
 	time_label.text = "Time left " + GameManager.get_time()
 
 func _on_health_lost_health(amount: float) -> void:
-	# animation_player.play("hit")
+	animation_player.play("flash")
 	health_bar.value = health.health  # Update health bar when damaged
 
 func _on_xp_change(xp: float) -> void:
