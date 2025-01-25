@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var game_over_screen: CanvasLayer = $GameOverScreen
 @onready var victory_screen: CanvasLayer = $VictoryScreen
+@onready var victory_label: Label = $VictoryScreen/CenterContainer/VBoxContainer/Label
+@onready var game_over_label: Label = $GameOverScreen/CenterContainer/VBoxContainer/Label
 @onready var main_menu: CanvasLayer = $MainMenu
 @onready var check_button: CheckButton = $MainMenu/MarginContainer/CenterContainer/VBoxContainer/CheckButton
 @onready var pause_menu: CanvasLayer = $PauseMenu
@@ -17,13 +19,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		pause_game()
 
 func _on_restart_button_pressed() -> void:
+	PlayerManager.reset_stats()
 	reload_game()
 
 func on_game_end() -> void:
+	game_over_label.text = "You Lost\n" + "You survived for " + str(GameManager.game_duration - GameManager.get_time_float()) + " seconds"
 	game_over_screen.visible = true
 	get_tree().paused = true
 
 func on_victory() -> void:
+	victory_label.text = "You Win!!!\n" + "You destroyed " + str(PlayerManager.kill_count)
 	victory_screen.visible = true
 	get_tree().paused = true
 
