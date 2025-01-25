@@ -8,6 +8,7 @@ const speed = 700.0
 @onready var xp_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPLable
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var is_moving: bool = false  # New variable to track movement
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
 	health.MAX_HEALTH = PlayerManager.max_health
@@ -21,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	# Rotate hitbox only when moving
 	if is_moving:
 		hitbox.rotation = velocity.angle()
+		animated_sprite_2d.rotation = velocity.angle()
 		
 	move_and_slide()
 
@@ -36,3 +38,7 @@ func _process(delta: float) -> void:
 
 func _on_health_lost_health() -> void:
 	animation_player.play("hit")
+
+
+func _on_hitbox_hit() -> void:
+	animated_sprite_2d.play("claw")

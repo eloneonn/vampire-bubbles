@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=22 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
-[ext_resource type="Texture2D" uid="uid://bwu8l5g5tleja" path="res://assets/sprites/character.png" id="2_nnqnq"]
+[ext_resource type="Texture2D" uid="uid://dokijrfaawywf" path="res://assets/sprites/PLAYER.png" id="2_odj1m"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_yall3"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_qfmrt"]
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="5_8vkx0"]
 [ext_resource type="Resource" uid="uid://cvgb2wprs2j54" path="res://resources/claw.tres" id="6_e0ft5"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="7_owscx"]
+[ext_resource type="Texture2D" uid="uid://obw0wqu0iqg0" path="res://assets/sprites/VB_ClawAttack.png" id="8_mcbey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_op8pd"]
 
@@ -17,7 +18,58 @@ radius = 400.0
 radius = 65.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ep6i8"]
-size = Vector2(257, 46)
+size = Vector2(357.5, 513)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2fi6"]
+atlas = ExtResource("8_mcbey")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2vjg"]
+atlas = ExtResource("8_mcbey")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxpx0"]
+atlas = ExtResource("8_mcbey")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga0qr"]
+atlas = ExtResource("8_mcbey")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu7yy"]
+atlas = ExtResource("8_mcbey")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dy7lm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2fi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2vjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxpx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga0qr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu7yy")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"claw",
+"speed": 24.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_uqgfd"]
 length = 0.001
@@ -59,7 +111,7 @@ _data = {
 script = ExtResource("1_4k555")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_nnqnq")
+texture = ExtResource("2_odj1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_op8pd")
@@ -128,15 +180,22 @@ collision_mask = 2
 script = ExtResource("7_owscx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(129, 1)
+position = Vector2(250, 0)
 shape = SubResource("RectangleShape2D_ep6i8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.997708, 1)
+sprite_frames = SubResource("SpriteFrames_dy7lm")
+animation = &"claw"
+autoplay = "new_animation"
+offset = Vector2(250, 0)
+flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_swakf")
 }
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]

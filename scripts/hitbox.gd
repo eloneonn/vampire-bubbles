@@ -4,6 +4,8 @@ class_name Hitbox extends Area2D
 @export var permanent: bool = false
 @export var damage: float = 10
 
+signal hit
+
 func _ready() -> void:
 	self.connect("area_entered", on_enter)
 	if !permanent:
@@ -24,5 +26,6 @@ func enable_for(duration: float) -> void:
 		return
 	
 	collision_shape.disabled = false
+	hit.emit()
 	await get_tree().create_timer(duration).timeout
 	collision_shape.disabled = true
