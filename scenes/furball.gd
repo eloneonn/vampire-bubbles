@@ -1,23 +1,20 @@
-extends Node2D
+class_name Furball extends Node2D
 
-@export var speed: float = 800  # Speed of the projectile
-var direction: Vector2  # Direction of the projectile's movement
+var speed: float = 800 
+var direction: Vector2 
+var damage: float
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-	# Assuming the direction is set when the projectile is fired (through some external script)
-	#direction = global_position.normalized()  # You would set the direction based on the firing logic
+@onready var hitbox: Hitbox = $Hitbox
 
-# Called every frame
+func _ready():
+	hitbox.damage = damage
+
 func _process(delta: float) -> void:
-	# Move the projectile in the direction it's fired
+	
+	
+	
 	position += direction * speed * delta
-	
-	
-	# Check if the projectile is out of the screen bounds
-	#if not get_viewport_rect().has_point(position):
-	#	queue_free()  # Delete the projectile if it goes off-screen
-
+	position.angle()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()

@@ -10,9 +10,8 @@ const speed = 700.0
 @onready var claw_animations: AnimatedSprite2D = $Claw/ClawAnimations
 @onready var tail_whip_animations: AnimatedSprite2D = $TailWhip/TailWhipAnimations
 @onready var tail_whip: Weapon = $TailWhip
-@onready var projectile_weapon = $Projectile_Weapon
+@onready var furball: Projectile_Weapon = $Projectile_Weapon
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
 
 var claw_sound = preload("res://assets/sfx/claw.wav")
 var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
@@ -81,12 +80,13 @@ func on_upgrade_receive(upgrade: Enums.Upgrade):
 			tail_whip.speed += tail_whip.speed * 0.25
 		#Enums.Upgrade.TAILWHIP_SIZE:
 		Enums.Upgrade.FURBALL:
-			print("param3 is not 3!")
+			furball.enabled = true
 		Enums.Upgrade.FURBALL_DMG:
-			print("param3 is not 3!")
-		#Enums.Upgrade.FURBALL_SPEED:
+			furball.damage += furball.damage * 0.25
+		Enums.Upgrade.FURBALL_SPEED:
+			furball.speed += furball.speed * 0.25
 		Enums.Upgrade.FURBALL_PROJECTILE:
-			print("param3 is not 3!")
+			furball.amount_of_projectiles = furball.amount_of_projectiles + 1
 
 func _on_claw_attack() -> void:
 	claw_animations.play("claw")
@@ -103,3 +103,6 @@ func _on_tail_whip_attack() -> void:
 	audio_stream_player_2d.pitch_scale = random_pitch
 	audio_stream_player_2d.stream = tailwhip_sound
 	audio_stream_player_2d.play()
+
+func _on_health_gained_health() -> void:
+	health_bar.value = health.health

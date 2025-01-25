@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk4s5jhai7aah"]
+[gd_scene load_steps=7 format=3 uid="uid://bk4s5jhai7aah"]
 
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
 [ext_resource type="PackedScene" uid="uid://bb1g5pqn04cbd" path="res://scenes/enemy_1.tscn" id="3_katr8"]
-[ext_resource type="PackedScene" uid="uid://dggdmx2w51q5n" path="res://scenes/map.tscn" id="4_paguu"]
+[ext_resource type="PackedScene" uid="uid://bs7afodpendgk" path="res://scenes/map.tscn" id="4_eut1i"]
+[ext_resource type="Texture2D" uid="uid://70st8rbl4g00" path="res://assets/backgrounds/tile4.png" id="4_oiyq3"]
 
 [sub_resource type="GDScript" id="GDScript_okrbu"]
 script/source = "extends Button
@@ -29,7 +30,7 @@ scale = Vector2(0.991383, 1)
 position = Vector2(496, -239)
 player = NodePath("../Player")
 
-[node name="Map" parent="." instance=ExtResource("4_paguu")]
+[node name="Map" parent="." instance=ExtResource("4_eut1i")]
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 visible = false
