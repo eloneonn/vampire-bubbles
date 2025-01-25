@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://ciqp3skap3hn8"]
+[gd_scene load_steps=11 format=3 uid="uid://ciqp3skap3hn8"]
 
 [ext_resource type="Script" path="res://scenes/splitting_buble.gd" id="1_bpwb1"]
 [ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="1_jhge4"]
+[ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_6t6ei"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="2_q8rjr"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_yeo6h"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_x35rd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1el8"]
+resource_local_to_scene = true
+shader = ExtResource("2_6t6ei")
+shader_parameter/time_offset = null
+shader_parameter/time_speed = 3.2
+shader_parameter/scale_y = 1.066
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ft6h8"]
 radius = 40.0
@@ -20,6 +28,7 @@ script = ExtResource("1_bpwb1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 1, 1)
+material = SubResource("ShaderMaterial_j1el8")
 texture = ExtResource("1_jhge4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

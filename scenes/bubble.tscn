@@ -1,11 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8soi2nqpll22"]
+[gd_scene load_steps=11 format=3 uid="uid://brcuxf7gihes6"]
+
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_78a5o"]
+[ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_bdyc5"]
 [ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="2_d50a0"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_qvq7t"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_8k852"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_jwe78"]
 [ext_resource type="AudioStream" uid="uid://ca3cchne6sd22" path="res://assets/sfx/bubble1.wav" id="6_0bom3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh4gd"]
+resource_local_to_scene = true
+shader = ExtResource("2_bdyc5")
+shader_parameter/time_offset = null
+shader_parameter/time_speed = 3.15
+shader_parameter/scale_y = 1.066
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkpxv"]
 radius = 40.0
@@ -23,6 +32,7 @@ motion_mode = 1
 script = ExtResource("1_78a5o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hh4gd")
 texture = ExtResource("2_d50a0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
