@@ -115,6 +115,7 @@ motion_mode = 1
 script = ExtResource("1_4k555")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.0182)
 texture = ExtResource("2_odj1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
