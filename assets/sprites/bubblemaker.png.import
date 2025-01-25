@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bilm8uk41sim7"
-path="res://.godot/imported/VB_FurBall.png-717c8dcc4e9e8b01ee04f1dbfe38eb7a.ctex"
+uid="uid://b4ng5jlf0ieh0"
+path="res://.godot/imported/bubblemaker.png-ad9477c895033e164bb618777a60dd5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/VB_FurBall.png"
-dest_files=["res://.godot/imported/VB_FurBall.png-717c8dcc4e9e8b01ee04f1dbfe38eb7a.ctex"]
+source_file="res://assets/sprites/bubblemaker.png"
+dest_files=["res://.godot/imported/bubblemaker.png-ad9477c895033e164bb618777a60dd5e.ctex"]
 
 [params]
 

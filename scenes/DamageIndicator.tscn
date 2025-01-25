@@ -91,7 +91,7 @@ offset_right = 20.0
 offset_bottom = -52.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.596078, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 60
 text = "0"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

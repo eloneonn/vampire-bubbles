@@ -1,4 +1,4 @@
-class_name EnemySpawner extends Node
+class_name EnemySpawner extends Node2D
 
 enum enemy_type {BASIC, SPLIT, ARMORED}
 
@@ -10,5 +10,6 @@ var baby = preload("res://scenes/baby_bubble.tscn")
 
 func spawn_enemy():
 	var instance = split.instantiate()
+	
 	instance.position = get_parent().global_position
 	get_tree().root.add_child(instance)

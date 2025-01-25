@@ -3,12 +3,12 @@ extends CharacterBody2D
 const speed = 700.0
 @onready var health: Health = $Health
 @onready var time_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/TimerLable
-@onready var hitbox: Hitbox = $Hitbox
 @onready var xp_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPLable
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthBar
 @onready var xp_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPBar
+@onready var weapon: Weapon = $Weapon
 
 var is_moving: bool = false  # Track movement
 
@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 
 	# Rotate hitbox only when moving
 	if is_moving:
-		hitbox.rotation = velocity.angle()
+		weapon.rotation = velocity.angle()
 		animated_sprite_2d.rotation = velocity.angle()
 		
 	move_and_slide()
@@ -49,3 +49,5 @@ func _on_hitbox_hit() -> void:
 
 func _on_xp_change(xp: float) -> void:
 	xp_bar.value = xp
+func _on_weapon_attack(weapon_type: WeaponType) -> void:
+	animated_sprite_2d.play(weapon_type.animation)

@@ -26,16 +26,15 @@ func _on_health_health_depleted() -> void:
 	
 
 func spawn_baby():
-	print("bebes")
 	var baby = preload("res://scenes/baby_bubble.tscn")
 	var offset_distance = 20
 	#mini bubble 1
 	var instance_1 = baby.instantiate()
 	instance_1.position = global_position + Vector2(offset_distance, 0)
-	get_tree().root.add_child(instance_1)
+	get_tree().root.add_child.call_deferred(instance_1)
 	#mini bubble 2
 	var instance_2 = baby.instantiate()
 	instance_2.position = global_position - Vector2(offset_distance, 0)
-	get_tree().root.add_child(instance_2)
+	get_tree().root.add_child.call_deferred(instance_2)
 	
 	

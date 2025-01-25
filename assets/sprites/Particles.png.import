@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bilm8uk41sim7"
-path="res://.godot/imported/VB_FurBall.png-717c8dcc4e9e8b01ee04f1dbfe38eb7a.ctex"
+uid="uid://cmac55iqic55l"
+path="res://.godot/imported/Particles.png-f2327a84fb8205e1d5e294c39a02d0ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/VB_FurBall.png"
-dest_files=["res://.godot/imported/VB_FurBall.png-717c8dcc4e9e8b01ee04f1dbfe38eb7a.ctex"]
+source_file="res://assets/sprites/Particles.png"
+dest_files=["res://.godot/imported/Particles.png-f2327a84fb8205e1d5e294c39a02d0ea.ctex"]
 
 [params]
 

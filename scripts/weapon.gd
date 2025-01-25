@@ -1,8 +1,10 @@
-class_name Weapon extends Node
+class_name Weapon extends Node2D
 
 @export var weapon_type: WeaponType = WeaponType.new()
-@onready var hitbox: Hitbox = $"../Hitbox"
+@export var hitbox: Hitbox
 @onready var timer: Timer = $Timer
+
+signal attack(weapon_type: WeaponType)
 
 func _ready() -> void:
 	timer.wait_time = weapon_type.speed 
@@ -16,4 +18,5 @@ func _process(delta: float) -> void:
 
 # Called every x seconds
 func perform_attack() -> void:
+	attack.emit(weapon_type)
 	hitbox.enable_for(weapon_type.duration)
