@@ -358,6 +358,8 @@ flip_v = true
 script = ExtResource("13_mvsuu")
 weapon_type = SubResource("Resource_6f5nn")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]
 [connection signal="attack" from="Claw" to="." method="_on_claw_attack"]

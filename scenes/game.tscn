@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
 [ext_resource type="PackedScene" uid="uid://bb1g5pqn04cbd" path="res://scenes/enemy_1.tscn" id="3_katr8"]
-[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="4_paguu"]
+[ext_resource type="PackedScene" uid="uid://dggdmx2w51q5n" path="res://scenes/map.tscn" id="4_paguu"]
 
 [sub_resource type="GDScript" id="GDScript_okrbu"]
 script/source = "extends Button
