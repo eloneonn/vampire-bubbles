@@ -19,6 +19,7 @@ func add_experience(amount: float) -> void:
 	if experience >= next_level:
 		level += 1
 		next_level += next_level * next_level_modifier
+		await get_tree().create_timer(0.2).timeout
 		level_up.emit(level)
 
 func add_kill(amount: int) -> void:

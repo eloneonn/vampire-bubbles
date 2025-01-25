@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://usrlt4253wha"]
+[gd_scene load_steps=9 format=3 uid="uid://bs7afodpendgk"]
 
 [ext_resource type="Texture2D" uid="uid://cu5q1k37if3rn" path="res://assets/backgrounds/Walls/WallCorner.png" id="1_mfd86"]
 [ext_resource type="Texture2D" uid="uid://dgbk4kcx1lqqs" path="res://assets/backgrounds/Walls/WallHorizontal.png" id="2_58ggs"]
 [ext_resource type="Texture2D" uid="uid://dy45rjjfaexdc" path="res://assets/backgrounds/Walls/WallVertical.png" id="3_aiqcj"]
 [ext_resource type="Texture2D" uid="uid://70st8rbl4g00" path="res://assets/backgrounds/tile4.png" id="4_ua4gg"]
-[ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="5_hlgm2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rfqt1"]
 distance = -2468.0
@@ -126,6 +125,3 @@ shape = SubResource("WorldBoundaryShape2D_3mwfk")
 
 [node name="Right" type="CollisionShape2D" parent="."]
 shape = SubResource("WorldBoundaryShape2D_7wcj0")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("5_hlgm2")]
-position = Vector2(547, 738)
