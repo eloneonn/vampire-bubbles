@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5wpncfn0lxu5"
-path="res://.godot/imported/cardfurball2.png-0bbe8c9b718626c92a83a49d72e05381.ctex"
+uid="uid://dhdrvjjoodvxi"
+path="res://.godot/imported/cardfurball4.png-09af7d0c57776bcef2a7269b3b6ba3f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/cards/cardfurball2.png"
-dest_files=["res://.godot/imported/cardfurball2.png-0bbe8c9b718626c92a83a49d72e05381.ctex"]
+source_file="res://assets/sprites/cards/cardfurball4.png"
+dest_files=["res://.godot/imported/cardfurball4.png-09af7d0c57776bcef2a7269b3b6ba3f0.ctex"]
 
 [params]
 
