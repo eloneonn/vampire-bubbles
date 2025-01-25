@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
 @export var player: NodePath
-@export var orbit_radius = 100.0
+@export var base_orbit_radius = 1000.0
 @export var orbit_speed = 3.0
-@onready var timer: Timer = $Timer
-
-var orbit_modifier = 0
-var orbit_increasing = true
+@export var radius_variation_amplitude = 50.0
+@export var radius_variation_speed = 1.0
+@export var direction_change_interval = 5.0  # Time in seconds between potential direction changes
 
 var angle = 0.0
+var orbit_direction = 1  # 1 for clockwise, -1 for counter-clockwise
+var time_since_last_direction_change = 0.0
 var SPEED = 1200
 
 func _physics_process(delta):
@@ -21,17 +22,17 @@ func _physics_process(delta):
 
 	elif player:
 		var player_node = get_node(player)
-		angle += orbit_speed * delta
-		var offset = Vector2(cos(angle), sin(angle)) * (orbit_radius + orbit_modifier)
-		global_position = player_node.global_position + offset
-		if orbit_modifier < 100 and orbit_increasing == true:
-			orbit_modifier += 5
-			if orbit_modifier >= 100:
-				orbit_increasing = false
-				
-		if orbit_modifier > -100 and orbit_increasing == false:
-			orbit_modifier -= 5
-			if orbit_modifier <= -100:
-				orbit_increasing = true
+		angle += orbit_speed * delta * orbit_direction
 
-		
+		# Calculate dynamic orbit radius using a sine wave
+		var dynamic_radius = base_orbit_radius + sin(Time.get_ticks_msec() / 1000.0 * radius_variation_speed) * radius_variation_amplitude
+
+		var offset = Vector2(cos(angle), sin(angle)) * dynamic_radius
+		global_position = player_node.global_position + offset
+
+		# Update time and potentially change orbit direction
+		time_since_last_direction_change += delta
+		if time_since_last_direction_change >= direction_change_interval:
+			if randi() % 2 == 0:
+				orbit_direction *= -1  # Change direction
+			time_since_last_direction_change = 0.0
