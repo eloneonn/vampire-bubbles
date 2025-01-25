@@ -3,7 +3,6 @@ extends CharacterBody2D
 const speed = 700.0
 @onready var health: Health = $Health
 @onready var time_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/TimerLable
-@onready var xp_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPLable
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthBar
@@ -16,7 +15,6 @@ func _ready():
 	health.MAX_HEALTH = PlayerManager.max_health
 	health_bar.max_value = health.MAX_HEALTH  # Set max health for the bar
 	health_bar.value = health.health  # Initialize health bar
-	xp_label.text = str(PlayerManager.experience)
 	PlayerManager.xp_changed.connect(_on_xp_change)
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +34,6 @@ func _on_health_health_depleted() -> void:
 
 func _process(delta: float) -> void:
 	time_label.text = "Time left " + GameManager.get_time()
-	xp_label.text = "XP " + str(PlayerManager.experience)
 
 func _on_health_lost_health(amount: float) -> void:
 	animation_player.play("hit")
