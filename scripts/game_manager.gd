@@ -34,6 +34,9 @@ func get_time_float():
 	else:
 		return 0.0
 
+func get_progress():
+	return timer.time_left / game_duration * 100
+
 func _on_timer_timeout():
 	victory.emit()
 

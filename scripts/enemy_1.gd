@@ -2,13 +2,13 @@ extends CharacterBody2D
 
 @export var player: NodePath
 @export var orbit_radius = 100.0
-@export var orbit_speed = 1.0
+@export var orbit_speed = 3.0
 @onready var timer: Timer = $Timer
 @onready var enemy_spawner: EnemySpawner = $EnemySpawner
 
 @export var spawn_interval: float = 0.5
 var angle = 0.0
-var SPEED = 800
+var SPEED = 1200
 
 func _ready() -> void:
 	timer.wait_time = spawn_interval

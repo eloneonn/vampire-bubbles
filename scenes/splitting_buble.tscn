@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://defd75f26vkya"]
+[gd_scene load_steps=9 format=3 uid="uid://ciqp3skap3hn8"]
 
 [ext_resource type="Script" path="res://scenes/splitting_buble.gd" id="1_bpwb1"]
 [ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="1_jhge4"]
@@ -25,7 +25,7 @@ texture = ExtResource("1_jhge4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ft6h8")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_q8rjr")
 MAX_HEALTH = 10.0
 
