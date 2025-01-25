@@ -6,9 +6,9 @@ extends CharacterBody2D
 @onready var timer: Timer = $Timer
 @onready var enemy_spawner: EnemySpawner = $EnemySpawner
 
-@export var spawn_interval: float = 1.0
+@export var spawn_interval: float = 0.5
 var angle = 0.0
-var SPEED = 300
+var SPEED = 800
 
 func _ready() -> void:
 	timer.wait_time = spawn_interval
@@ -27,8 +27,7 @@ func _physics_process(delta):
 		velocity = direction * SPEED
 		
 		move_and_slide()
-		
-		global_position = get_global_mouse_position()
+
 	elif player:
 		var player_node = get_node(player)
 		angle += orbit_speed * delta
