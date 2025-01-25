@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5jb70vc4pifj"]
+[gd_scene load_steps=9 format=3 uid="uid://cuvsjvmdmmmyy"]
 
 [ext_resource type="Script" path="res://scripts/baby_bubble.gd" id="1_qxy7b"]
 [ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="2_qpavq"]
@@ -27,7 +27,7 @@ texture = ExtResource("2_qpavq")
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_xoncb")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node2D" parent="."]
 script = ExtResource("3_6i7yo")
 MAX_HEALTH = 20.0
 
