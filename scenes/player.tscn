@@ -44,6 +44,9 @@ region = Rect2(2048, 0, 512, 512)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_l2fi6")
 }, {
 "duration": 1.0,
@@ -108,9 +111,11 @@ _data = {
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
 script = ExtResource("1_4k555")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.0182)
 texture = ExtResource("2_odj1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -136,6 +141,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="HealthBar" type="ProgressBar" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
 [node name="TimerLable" type="Label" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -157,7 +166,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
 shape = SubResource("CircleShape2D_nn2cy")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node2D" parent="."]
 script = ExtResource("3_yall3")
 
 [node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]

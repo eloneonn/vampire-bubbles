@@ -6,6 +6,7 @@ extends CharacterBody2D
 const SPEED = 100.0
 
 func _ready():
+	
 	player = get_tree().get_nodes_in_group("player")[0]
 
 func _physics_process(delta: float) -> void:

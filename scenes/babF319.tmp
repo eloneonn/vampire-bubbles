@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5jb70vc4pifj"]
+
+[ext_resource type="Script" path="res://scripts/baby_bubble.gd" id="1_qxy7b"]
+[ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="2_qpavq"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="3_6i7yo"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_6ltoh"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_re5w6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xoncb"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aob1k"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gb3d6"]
+radius = 45.0
+
+[node name="BabyBubble" type="Node2D" groups=["enemies"]]
+script = ExtResource("1_qxy7b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["enemies"]]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qpavq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_xoncb")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_6i7yo")
+MAX_HEALTH = 10.0
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 3
+script = ExtResource("4_6ltoh")
+permanent = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_aob1k")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("5_re5w6")
+health = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_gb3d6")

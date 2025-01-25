@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8soi2nqpll22"]
+[gd_scene load_steps=11 format=3 uid="uid://4stwgyr44k64"]
 
-[ext_resource type="Script" path="res://scripts/bubble.gd" id="1_78a5o"]
-[ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="2_d50a0"]
-[ext_resource type="Script" path="res://scripts/health.gd" id="3_qvq7t"]
-[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_8k852"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_jwe78"]
+[ext_resource type="Script" path="res://scripts/ghost_bubble.gd" id="1_0nxrg"]
+[ext_resource type="Texture2D" uid="uid://ck5boet6w7704" path="res://assets/sprites/BUBBLE Ghost.png" id="2_hwdug"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="3_3bbvq"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_wqx5q"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_vfic8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkpxv"]
 radius = 40.0
@@ -15,26 +15,32 @@ radius = 45.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_awqkn"]
 radius = 45.0
 
-[node name="Bubble" type="CharacterBody2D" groups=["enemies"]]
+[sub_resource type="Animation" id="Animation_6glqa"]
+resource_name = "hit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5f0"]
+_data = {
+"hit": SubResource("Animation_6glqa")
+}
+
+[node name="GhostBubble" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
-collision_mask = 2
-motion_mode = 1
-script = ExtResource("1_78a5o")
+collision_mask = 0
+script = ExtResource("1_0nxrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
-texture = ExtResource("2_d50a0")
+texture = ExtResource("2_hwdug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kkpxv")
 
 [node name="Health" type="Node2D" parent="."]
-script = ExtResource("3_qvq7t")
-MAX_HEALTH = 10.0
+script = ExtResource("3_3bbvq")
+MAX_HEALTH = 20.0
 
 [node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
 collision_layer = 3
-script = ExtResource("4_jwe78")
+script = ExtResource("4_wqx5q")
 permanent = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -43,11 +49,16 @@ shape = SubResource("CircleShape2D_4is44")
 [node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("4_8k852")
+script = ExtResource("5_vfic8")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_awqkn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1d5f0")
+}
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]
