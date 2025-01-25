@@ -10,7 +10,8 @@
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="7_owscx"]
 [ext_resource type="Texture2D" uid="uid://obw0wqu0iqg0" path="res://assets/sprites/VB_ClawAttack.png" id="8_mcbey"]
 [ext_resource type="Texture2D" uid="uid://cu68inninusa2" path="res://assets/sprites/character walk.png" id="9_iwlcg"]
-[ext_resource type="Texture2D" uid="uid://6kpvi5x7vyc4" path="res://assets/sprites/PlayerShadow.png" id="11_4mqsg"]
+[ext_resource type="Script" path="res://scripts/weapon_type.gd" id="11_jmj4k"]
+[ext_resource type="Texture2D" uid="uid://w0kkfm4pwnpl" path="res://assets/sprites/VB_TailWhip.png" id="11_tgftn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_op8pd"]
 radius = 48.28
@@ -22,7 +23,7 @@ radius = 400.0
 radius = 65.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ep6i8"]
-size = Vector2(357.5, 513)
+size = Vector2(176, 258)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2fi6"]
 atlas = ExtResource("8_mcbey")
@@ -74,7 +75,7 @@ animations = [{
 }, {
 "frames": [],
 "loop": false,
-"name": &"new_animation",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -124,6 +125,79 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 12.0
+}]
+
+[sub_resource type="Resource" id="Resource_1w8a6"]
+script = ExtResource("11_jmj4k")
+damage = 20.0
+speed = 2.0
+duration = 0.2
+animation = ""
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2jh8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su5xx"]
+atlas = ExtResource("11_tgftn")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq046"]
+atlas = ExtResource("11_tgftn")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y7cn"]
+atlas = ExtResource("11_tgftn")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g35s"]
+atlas = ExtResource("11_tgftn")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2oiu"]
+atlas = ExtResource("11_tgftn")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di7fe"]
+atlas = ExtResource("11_tgftn")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rnk6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su5xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq046")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y7cn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g35s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2oiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di7fe")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
@@ -219,27 +293,28 @@ health = NodePath("../Health")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_ttltg")
 
-[node name="Weapon" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="Claw" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("5_8vkx0")
 weapon_type = ExtResource("6_e0ft5")
 hitbox = NodePath("ClawHitbox")
+enabled = true
 
-[node name="Timer" type="Timer" parent="Weapon"]
+[node name="Timer" type="Timer" parent="Claw"]
 
-[node name="ClawHitbox" type="Area2D" parent="Weapon"]
+[node name="ClawHitbox" type="Area2D" parent="Claw"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_owscx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/ClawHitbox"]
-position = Vector2(250, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Claw/ClawHitbox"]
+position = Vector2(91, 0)
 shape = SubResource("RectangleShape2D_ep6i8")
 
-[node name="WeaponAnimations" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.997708, 1)
+[node name="ClawAnimations" type="AnimatedSprite2D" parent="Claw"]
+scale = Vector2(0.5, 0.502247)
 sprite_frames = SubResource("SpriteFrames_dy7lm")
 animation = &"claw"
-autoplay = "new_animation"
+autoplay = "idle"
 offset = Vector2(250, 0)
 flip_h = true
 
@@ -247,6 +322,30 @@ flip_h = true
 sprite_frames = SubResource("SpriteFrames_kwj7x")
 animation = &"idle"
 frame_progress = 1.0
+flip_h = true
+
+[node name="TailWhip" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]
+script = ExtResource("5_8vkx0")
+weapon_type = SubResource("Resource_1w8a6")
+hitbox = NodePath("Hitbox")
+
+[node name="Hitbox" type="Area2D" parent="TailWhip"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_owscx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailWhip/Hitbox"]
+position = Vector2(-142, 3)
+scale = Vector2(-14.9426, 15.4749)
+shape = SubResource("CapsuleShape2D_2jh8i")
+
+[node name="TailWhipAnimations" type="AnimatedSprite2D" parent="TailWhip"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_6rnk6")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, 140)
+flip_v = true
 
 [node name="PlayerShadow" type="Sprite2D" parent="."]
 z_index = -1
@@ -255,5 +354,6 @@ texture = ExtResource("11_4mqsg")
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]
-[connection signal="attack" from="Weapon" to="." method="_on_weapon_attack"]
-[connection signal="hit" from="Weapon/ClawHitbox" to="." method="_on_hitbox_hit"]
+[connection signal="attack" from="Claw" to="." method="_on_claw_attack"]
+[connection signal="hit" from="Claw/ClawHitbox" to="." method="_on_hitbox_hit"]
+[connection signal="attack" from="TailWhip" to="." method="_on_tail_whip_attack"]
