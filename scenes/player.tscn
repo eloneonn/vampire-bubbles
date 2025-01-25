@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=27 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
 [ext_resource type="Texture2D" uid="uid://bwu8l5g5tleja" path="res://assets/sprites/character.png" id="2_nnqnq"]
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="2_pjiqv"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_yall3"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_qfmrt"]
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="5_8vkx0"]
@@ -172,6 +173,38 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
 shape = SubResource("CircleShape2D_nn2cy")
+
+[node name="EnemySpawner" type="Node2D" parent="Camera2D"]
+position = Vector2(-2088, -1234)
+script = ExtResource("2_pjiqv")
+
+[node name="EnemySpawner2" type="Node2D" parent="Camera2D"]
+position = Vector2(2095, -1304)
+script = ExtResource("2_pjiqv")
+
+[node name="EnemySpawner3" type="Node2D" parent="Camera2D"]
+position = Vector2(2145, 1220)
+script = ExtResource("2_pjiqv")
+
+[node name="EnemySpawner4" type="Node2D" parent="Camera2D"]
+position = Vector2(-2087, 1237)
+script = ExtResource("2_pjiqv")
+
+[node name="EnemySpawner5" type="Node2D" parent="Camera2D"]
+position = Vector2(17, 1859)
+script = ExtResource("2_pjiqv")
+
+[node name="EnemySpawner6" type="Node2D" parent="Camera2D"]
+position = Vector2(-2730, -4)
+script = ExtResource("2_pjiqv")
+
+[node name="EnemySpawner7" type="Node2D" parent="Camera2D"]
+position = Vector2(-21, -1683)
+script = ExtResource("2_pjiqv")
+
+[node name="EnemySpawner8" type="Node2D" parent="Camera2D"]
+position = Vector2(2713, 0)
+script = ExtResource("2_pjiqv")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("3_yall3")

@@ -4,24 +4,12 @@ extends CharacterBody2D
 @export var orbit_radius = 100.0
 @export var orbit_speed = 3.0
 @onready var timer: Timer = $Timer
-@onready var enemy_spawner: EnemySpawner = $EnemySpawner
 
 var orbit_modifier = 0
 var orbit_increasing = true
 
-@export var spawn_interval: float = 0.5
 var angle = 0.0
 var SPEED = 1200
-
-func _ready() -> void:
-	timer.wait_time = spawn_interval
-	timer.one_shot = false
-	timer.connect("timeout", spawn)
-	timer.start()
-
-func spawn():
-	if enemy_spawner:
-		enemy_spawner.spawn_enemy()
 
 func _physics_process(delta):
 	if GameManager.two_player_game:
