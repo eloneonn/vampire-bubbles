@@ -6,6 +6,12 @@ var game_duration: float = 120
 
 var two_player_game: bool = false
 
+var basic_bubble_xp = 5
+var iron_bubble_xp = 25
+var ghost_bubble_xp = 15
+var split_bubble_xp = 5
+var baby_bubble_xp = 15
+
 signal game_ended
 signal victory
 
