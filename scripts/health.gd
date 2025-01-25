@@ -6,14 +6,16 @@ var damage_indicator = preload("res://scenes/DamageIndicator.tscn")
 
 signal health_depleted
 signal lost_health(amount: float)
+signal gained_health
 
 func heal(amount: float) -> void:
 	var new_health = health + amount
-	
 	if new_health >= MAX_HEALTH:
 		health = MAX_HEALTH
 	else:
 		health = new_health 
+		
+	gained_health.emit()
 
 func damage(attack: Attack) -> void:
 	lost_health.emit(attack.damage)

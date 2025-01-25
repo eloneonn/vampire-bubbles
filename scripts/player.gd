@@ -88,3 +88,6 @@ func _on_claw_attack() -> void:
 
 func _on_tail_whip_attack() -> void:
 	tail_whip_animations.play("hit")
+
+func _on_health_gained_health() -> void:
+	health_bar.value = health.health
