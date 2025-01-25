@@ -45,7 +45,6 @@ func _process(delta: float) -> void:
 
 func _on_health_lost_health(amount: float) -> void:
 	# animation_player.play("hit")
-	print(health.health)
 	health_bar.value = health.health  # Update health bar when damaged
 
 
