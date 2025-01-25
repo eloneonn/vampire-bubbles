@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
-[ext_resource type="PackedScene" uid="uid://6763pew6gisq" path="res://scenes/enemy_1.tscn" id="3_katr8"]
-[ext_resource type="Texture2D" uid="uid://70st8rbl4g00" path="res://assets/backgrounds/tile4.png" id="4_oiyq3"]
+[ext_resource type="PackedScene" uid="uid://bb1g5pqn04cbd" path="res://scenes/enemy_1.tscn" id="3_katr8"]
+[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="4_paguu"]
 
 [sub_resource type="GDScript" id="GDScript_okrbu"]
 script/source = "extends Button
@@ -29,12 +29,7 @@ scale = Vector2(0.991383, 1)
 position = Vector2(496, -239)
 player = NodePath("../Player")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-z_index = -10
-texture_repeat = 2
-texture = ExtResource("4_oiyq3")
-texture_rotation = -0.253073
-polygon = PackedVector2Array(-4386, 3733, -5302, -3157, 6704, -3575, 6110, 4515)
+[node name="Map" parent="." instance=ExtResource("4_paguu")]
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 visible = false
