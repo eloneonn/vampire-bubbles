@@ -1,6 +1,6 @@
 extends Node
 
-var timer: Timer
+@onready var timer: Timer = Timer.new()
 var game_duration: float = 60
 var two_player_game: bool = false
 
@@ -8,7 +8,6 @@ signal game_ended
 signal victory
 
 func start_game():
-	timer = Timer.new()
 	timer.wait_time = game_duration
 	timer.one_shot = true
 	add_child(timer)
