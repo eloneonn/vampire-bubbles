@@ -4,7 +4,7 @@ enum enemy_type {BASIC, FAST, ARMORED}
 
 var basic = preload("res://scenes/bubble.tscn")
 var iron = preload("res://scenes/iron_bubble.tscn")
-
+var ghost = preload("res://scenes/ghost_bubble.tscn")
 func spawn_enemy():
 	var instance = iron.instantiate()
 	instance.position = get_parent().global_position

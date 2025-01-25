@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b0w8rkb05nhqd"]
 
-[ext_resource type="Script" path="res://scenes/iron_bubble.gd" id="1_y5i6j"]
-[ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="2_s625n"]
+[ext_resource type="Script" path="res://scripts/iron_bubble.gd" id="1_y5i6j"]
+[ext_resource type="Texture2D" uid="uid://cvd4ubdi17tun" path="res://assets/sprites/bubblemetal.png" id="2_isrhc"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_oiyxy"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_hohud"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_7nugl"]
@@ -19,9 +19,8 @@ radius = 45.0
 script = ExtResource("1_y5i6j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_s625n")
+texture = ExtResource("2_isrhc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1gro2")
