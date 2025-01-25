@@ -3,16 +3,18 @@ extends CharacterBody2D
 const speed = 700.0
 @onready var health: Health = $Health
 @onready var time_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/TimerLable
-@onready var health_lable: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthLable
 @onready var hitbox: Hitbox = $Hitbox
 @onready var xp_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPLable
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-var is_moving: bool = false  # New variable to track movement
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthBar
+
+var is_moving: bool = false  # Track movement
 
 func _ready():
 	health.MAX_HEALTH = PlayerManager.max_health
+	health_bar.max_value = health.MAX_HEALTH  # Set max health for the bar
+	health_bar.value = health.health  # Initialize health bar
 	xp_label.text = str(PlayerManager.experience)
 
 func _physics_process(delta: float) -> void:
@@ -30,14 +32,15 @@ func _physics_process(delta: float) -> void:
 func _on_health_health_depleted() -> void:
 	GameManager.end_game()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	time_label.text = "Time left " + GameManager.get_time()
-	health_lable.text = "HP " + str(health.health)
 	xp_label.text = "XP " + str(PlayerManager.experience)
 
 func _on_health_lost_health(amount: float) -> void:
 	animation_player.play("hit")
+	print(health.health)
+	health_bar.value = health.health  # Update health bar when damaged
+
 
 func _on_hitbox_hit() -> void:
 	animated_sprite_2d.play("claw")
