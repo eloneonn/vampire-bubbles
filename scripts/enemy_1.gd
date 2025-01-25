@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var radius_variation_amplitude = 50.0
 @export var radius_variation_speed = 1.0
 @export var direction_change_interval = 5.0  # Time in seconds between potential direction changes
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var angle = 0.0
 var orbit_direction = 1  # 1 for clockwise, -1 for counter-clockwise
@@ -18,6 +19,11 @@ func _physics_process(delta):
 		var direction = (mouse_pos - global_position).normalized()
 		velocity = direction * SPEED
 		
+		if velocity.x > 0:
+			animated_sprite.flip_h = true
+		else:
+			animated_sprite.flip_h = false
+		
 		move_and_slide()
 
 	elif player:
@@ -29,6 +35,11 @@ func _physics_process(delta):
 
 		var offset = Vector2(cos(angle), sin(angle)) * dynamic_radius
 		global_position = player_node.global_position + offset
+		
+		if offset.x > 0:
+			animated_sprite.flip_h = true
+		else:
+			animated_sprite.flip_h = false
 
 		# Update time and potentially change orbit direction
 		time_since_last_direction_change += delta
@@ -36,3 +47,4 @@ func _physics_process(delta):
 			if randi() % 2 == 0:
 				orbit_direction *= -1  # Change direction
 			time_since_last_direction_change = 0.0
+		
