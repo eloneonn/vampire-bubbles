@@ -11,7 +11,7 @@ func _ready() -> void:
 func on_enter(area: Area2D):
 	if area is not Hurtbox:
 		return
-		
+	
 	var hurtbox: Hurtbox = area
 	var attack = Attack.new()
 	attack.damage = 10
