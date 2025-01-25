@@ -1,13 +1,9 @@
 extends Node
 
 @onready var timer: Timer = Timer.new()
-<<<<<<< HEAD
 var game_duration: float = 120
-=======
 @onready var cleanup_timer: Timer = Timer.new()
 
-var game_duration: float = 30
->>>>>>> 2e7db289c351a1be751bc5c1107a8a6cb7b08934
 var two_player_game: bool = false
 
 signal game_ended
