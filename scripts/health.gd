@@ -9,6 +9,12 @@ signal lost_health(amount: float)
 func damage(attack: Attack) -> void:
 	lost_health.emit(attack.damage)
 	
+	var dmg_inst: DamageIndicator = damage_indicator.instantiate()
+	dmg_inst.global_position = get_parent().global_position
+	dmg_inst.damage = attack.damage
+	
+	get_tree().root.add_child(dmg_inst)
+	
 	health -= attack.damage
 	if health <= 0:
 		health_depleted.emit()

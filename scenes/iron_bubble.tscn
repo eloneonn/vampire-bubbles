@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0w8rkb05nhqd"]
+
+[ext_resource type="Script" path="res://scripts/iron_bubble.gd" id="1_y5i6j"]
+[ext_resource type="Texture2D" uid="uid://cvd4ubdi17tun" path="res://assets/sprites/bubblemetal.png" id="2_isrhc"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="3_oiyxy"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_hohud"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_7nugl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gro2"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xiq0j"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m588a"]
+radius = 45.0
+
+[node name="IronBubble" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_y5i6j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_isrhc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1gro2")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_oiyxy")
+MAX_HEALTH = 40.0
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 3
+script = ExtResource("4_hohud")
+permanent = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_xiq0j")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("5_7nugl")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_m588a")
+
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
