@@ -25,6 +25,15 @@ func get_time():
 	else:
 		return "0"
 
+func get_time_float():
+	if timer and timer.time_left > 0:
+		# Calculate the remaining time
+		var time_left = int(timer.time_left)
+		# Update the label text
+		return time_left
+	else:
+		return 0.0
+
 func _on_timer_timeout():
 	victory.emit()
 

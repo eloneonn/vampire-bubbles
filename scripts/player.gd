@@ -23,7 +23,7 @@ func _on_health_health_depleted() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	time_label.text = GameManager.get_time()
-	health_lable.text = str(health.health)
-	xp_label.text = str(PlayerManager.experience)
+	time_label.text = "Time left " + GameManager.get_time()
+	health_lable.text = "HP " + str(health.health)
+	xp_label.text = "XP " + str(PlayerManager.experience)
 	pass

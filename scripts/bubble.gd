@@ -19,4 +19,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_health_health_depleted() -> void:
 	PlayerManager.add_experience(1)
+	PlayerManager.add_kill(1)
 	queue_free()
