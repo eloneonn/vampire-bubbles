@@ -7,17 +7,23 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 
+@export var update_interval: float = 0.5  # Time in seconds between AI updates
+var ai_timer: float = 0.0
+
 func _ready():
 	player = get_tree().get_nodes_in_group("player")[0]
 
 func _physics_process(delta: float) -> void:
+	ai_timer += delta
+	if ai_timer >= update_interval:
+		update_direction()
+		ai_timer = 0.0
+	move_and_slide()
+
+func update_direction() -> void:
 	if player:
-		var player_position = player.global_position
-		
-		var direction = (player_position - global_position).normalized()
+		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * SPEED
-		
-		move_and_slide()
 
 func _on_health_health_depleted() -> void:
 	PlayerManager.add_experience(1)

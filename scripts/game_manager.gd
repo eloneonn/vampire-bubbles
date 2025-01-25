@@ -1,7 +1,7 @@
 extends Node
 
 @onready var timer: Timer = Timer.new()
-var game_duration: float = 30
+var game_duration: float = 120
 var two_player_game: bool = false
 
 signal game_ended
