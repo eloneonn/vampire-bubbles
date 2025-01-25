@@ -2,6 +2,7 @@ extends Node
 
 var timer: Timer
 var game_duration: float = 60
+var two_player_game: bool = false
 
 signal game_ended
 signal victory
