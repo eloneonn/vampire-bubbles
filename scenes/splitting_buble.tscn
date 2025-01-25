@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://ciqp3skap3hn8"]
 
 [ext_resource type="Script" path="res://scenes/splitting_buble.gd" id="1_bpwb1"]
-[ext_resource type="Texture2D" uid="uid://bnvj4sxn6juwn" path="res://assets/sprites/BUBBLE4.png" id="1_jhge4"]
 [ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_6t6ei"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="2_q8rjr"]
+[ext_resource type="Texture2D" uid="uid://c1frjb5am5gfq" path="res://assets/sprites/BUBBLE Mud.png" id="3_cg7is"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_yeo6h"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_x35rd"]
 
@@ -27,9 +27,8 @@ radius = 45.0
 script = ExtResource("1_bpwb1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
 material = SubResource("ShaderMaterial_j1el8")
-texture = ExtResource("1_jhge4")
+texture = ExtResource("3_cg7is")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ft6h8")
@@ -56,6 +55,5 @@ health = NodePath("../Health")
 shape = SubResource("CircleShape2D_2m2y4")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-bus = &"SFX"
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

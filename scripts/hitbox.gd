@@ -4,7 +4,6 @@ class_name Hitbox extends Area2D
 @export var permanent: bool = false
 @export var damage: float = 10
 @export var enabled: bool = true
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../../Projectile_Weapon/AudioStreamPlayer2D"
 
 var claw_sound = preload("res://assets/sfx/claw.wav")
 var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
