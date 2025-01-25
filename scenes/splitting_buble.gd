@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 @onready var bubble: CharacterBody2D = $"."
 @onready var player: CharacterBody2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var hitbox: Hitbox = $Hitbox
 
 const SPEED = 100.0
 
@@ -22,9 +20,21 @@ func _physics_process(delta: float) -> void:
 func _on_health_health_depleted() -> void:
 	PlayerManager.add_experience(1)
 	PlayerManager.add_kill(1)
-	
-	sprite_2d.visible = false
-	hitbox.enabled = false
-	await get_tree().create_timer(0.9).timeout
-	
+	spawn_baby()
 	queue_free()
+	
+	
+
+func spawn_baby():
+	var baby = preload("res://scenes/baby_bubble.tscn")
+	var offset_distance = 20
+	#mini bubble 1
+	var instance_1 = baby.instantiate()
+	instance_1.position = global_position + Vector2(offset_distance, 0)
+	get_tree().root.add_child.call_deferred(instance_1)
+	#mini bubble 2
+	var instance_2 = baby.instantiate()
+	instance_2.position = global_position - Vector2(offset_distance, 0)
+	get_tree().root.add_child.call_deferred(instance_2)
+	
+	
