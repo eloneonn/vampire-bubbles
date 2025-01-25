@@ -10,6 +10,7 @@ const speed = 700.0
 @onready var claw_animations: AnimatedSprite2D = $Claw/ClawAnimations
 @onready var tail_whip_animations: AnimatedSprite2D = $TailWhip/TailWhipAnimations
 @onready var tail_whip: Weapon = $TailWhip
+@onready var projectile_weapon = $Projectile_Weapon
 
 var is_moving: bool = false  # Track movement
 
