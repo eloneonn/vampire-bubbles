@@ -77,21 +77,32 @@ func on_level_up(level: int):
 	var tailwhip_unlock = 3
 	var furball_unlock = 5
 	
-	if level < tailwhip_unlock:
-		upgrade_1 = Utils.ClawUpgrades.pick_random()
-		heal_upgrade = Utils.Heals.pick_random()
-		upgrade_2 = Utils.ClawUpgrades.pick_random()
-	elif level >= tailwhip_unlock and level < furball_unlock:
+	heal_upgrade = Utils.Heals.pick_random()
+
+	var available_upgrades = Utils.ClawUpgrades
+	
+	if level > 3 and !PlayerManager.has_upgrade(Enums.Upgrade.TAILWHIP):
+		available_upgrades.append(Enums.Upgrade.TAILWHIP)
+	
+	if level > 5 and !PlayerManager.has_upgrade(Enums.Upgrade.FURBALL):
+		available_upgrades.append(Enums.Upgrade.FURBALL)
+	
+	if PlayerManager.has_upgrade(Enums.Upgrade.TAILWHIP):
+		available_upgrades.append_array(Utils.TailWhipUpgrades)
+	
+	if PlayerManager.has_upgrade(Enums.Upgrade.FURBALL):
+		available_upgrades.append_array(Utils.FurballUpgrades)
+	
+	if available_upgrades.find(Enums.Upgrade.TAILWHIP) != -1:
 		upgrade_1 = Enums.Upgrade.TAILWHIP
-		heal_upgrade = Utils.Heals.pick_random()
-		upgrade_2 = Utils.Upgrades.pick_random()
+	elif available_upgrades.find(Enums.Upgrade.FURBALL) != -1:
+		upgrade_1 = Enums.Upgrade.FURBALL
 	else:
-		if Utils.NewWeapons.size() > 0:
-			upgrade_1 = Utils.NewWeapons.pick_random()
-		else:
-			upgrade_1 = Utils.Upgrades.pick_random()
-		heal_upgrade = Utils.Heals.pick_random()
-		upgrade_2 = Utils.Upgrades.pick_random()
+		upgrade_1 = available_upgrades.pick_random()
+	
+	var new_upgrades = available_upgrades.filter(func(x): return x != upgrade_1)
+	
+	upgrade_2 = available_upgrades.pick_random()
 	
 	upgrade_button_1.texture_normal = get_card_path(upgrade_1)
 	upgrade_button_2.texture_normal = get_card_path(heal_upgrade)
