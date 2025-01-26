@@ -11,6 +11,7 @@ extends Node2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var game_over_label: Label = $GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/Label
 @onready var victory_label: Label = $VictoryScreen/CenterContainer/MarginContainer/VBoxContainer/Label
+@onready var center_container_2: CenterContainer = $MainMenu/CenterContainer2
 
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
@@ -190,3 +191,6 @@ func _on_texture_button_2_pressed() -> void:
 func _on_back_pressed() -> void:
 	center_container.visible = false
 	pass # Replace with function body.
+
+func _on_credits_button_pressed() -> void:
+	center_container_2.visible = !center_container_2.visible

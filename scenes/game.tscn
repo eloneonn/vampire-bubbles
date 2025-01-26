@@ -302,6 +302,47 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_6vwkc")
 
+[node name="CenterContainer2" type="CenterContainer" parent="MainMenu"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MainMenu/CenterContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/CenterContainer2/Panel"]
+layout_mode = 0
+offset_right = 239.0
+offset_bottom = 335.0
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu/CenterContainer2/Panel/MarginContainer"]
+layout_mode = 2
+color = Color(0.235294, 0.356863, 0.615686, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/CenterContainer2/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="MainMenu/CenterContainer2/Panel/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "SFX
+Freesound.org: 
+pluralz, osha73, 
+thedapperdan, 
+Geoff-Bremner-Audio, CGEffex, 
+Artninja, thomas.asmuth, 
+Timbre, el_boss
+
+MUSIC
+Lesiakower (Pixabay.com)
+"
+
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -380,6 +421,24 @@ bus_name = "Music"
 [node name="Music_Slider2" parent="MainMenu/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("11_nggdx")]
 layout_mode = 2
 bus_name = "SFX"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenu"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" type="Button" parent="MainMenu/MarginContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Credits"
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -482,6 +541,7 @@ bus = &"Music"
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer2/Button" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer/UpgradeButton1" to="." method="_on_upgrade_button_1_pressed"]
