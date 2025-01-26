@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var hitbox: Hitbox = $Hitbox
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+@onready var poppingFX = preload("res://scenes/death_particle.tscn")
+
 const pop_sound = preload("res://assets/sfx/bubble1.wav")
 
 const SPEED = 200.0
@@ -37,6 +39,13 @@ func _on_health_health_depleted() -> void:
 	PlayerManager.add_kill(1)
 	sprite_2d.visible = false
 	hitbox.enabled = false
+	
+	#popping effect
+	var pop = poppingFX.instantiate()
+	get_tree().root.add_child(pop)
+	pop.global_position = self.global_position
+	pop.emitting = true
+	
 	await get_tree().create_timer(0.9).timeout
 	
 	queue_free()
