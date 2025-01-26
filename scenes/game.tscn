@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bk4s5jhai7aah"]
+[gd_scene load_steps=16 format=3 uid="uid://bk4s5jhai7aah"]
 
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2wla7tyrrjao" path="res://assets/backgrounds/quit button.png" id="8_o4rgp"]
 [ext_resource type="Texture2D" uid="uid://bljn1g5c5e1u1" path="res://assets/backgrounds/settings.png" id="9_fsomx"]
 [ext_resource type="Texture2D" uid="uid://nwqeyq640fvw" path="res://assets/backgrounds/back button.png" id="10_n5n3i"]
+[ext_resource type="PackedScene" path="res://music_slider.tscn" id="11_nggdx"]
 
 [sub_resource type="Animation" id="Animation_fxruk"]
 length = 0.001
@@ -336,9 +337,33 @@ layout_mode = 2
 theme_override_constants/margin_left = 150
 theme_override_constants/margin_top = 150
 
-[node name="Back" type="TextureButton" parent="MainMenu/CenterContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Back" type="TextureButton" parent="MainMenu/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("10_n5n3i")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 240
+theme_override_constants/margin_right = 800
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 300
+
+[node name="Music_Slider" parent="MainMenu/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("11_nggdx")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="Music_Slider2" parent="MainMenu/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("11_nggdx")]
+layout_mode = 2
+bus_name = "SFX"
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -435,7 +460,7 @@ bus = &"Music"
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]
-[connection signal="pressed" from="MainMenu/CenterContainer/MarginContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer/UpgradeButton1" to="." method="_on_upgrade_button_1_pressed"]
