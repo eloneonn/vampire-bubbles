@@ -7,7 +7,6 @@ radius = 68.0
 height = 288.0
 
 [node name="vase" type="StaticBody2D"]
-collision_layer = 8
 
 [node name="Objects30" type="Sprite2D" parent="."]
 position = Vector2(8, -1)

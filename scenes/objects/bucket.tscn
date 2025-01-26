@@ -6,7 +6,6 @@
 radius = 85.0235
 
 [node name="Bucket" type="StaticBody2D"]
-collision_layer = 8
 
 [node name="Objects03" type="Sprite2D" parent="."]
 position = Vector2(11, 10)

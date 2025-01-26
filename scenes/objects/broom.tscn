@@ -7,7 +7,6 @@ radius = 52.2519
 height = 441.532
 
 [node name="Broom" type="StaticBody2D"]
-collision_layer = 8
 
 [node name="Objects27" type="Sprite2D" parent="."]
 position = Vector2(12, 27)

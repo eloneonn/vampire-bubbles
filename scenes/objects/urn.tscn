@@ -7,7 +7,6 @@ radius = 56.0
 height = 162.0
 
 [node name="urn" type="StaticBody2D"]
-collision_layer = 8
 
 [node name="Objects36" type="Sprite2D" parent="."]
 position = Vector2(6, 1)
