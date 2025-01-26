@@ -35,6 +35,10 @@ func reset_stats() -> void:
 	max_health = 100
 	experience = 0
 	kill_count = 0
+	next_level = 25
+	next_level_absolute = 25
+	level = 1
+	upgrades = []
 	
 func add_upgrade(upgrade: Enums.Upgrade) -> void:
 	received_upgrade.emit(upgrade)
