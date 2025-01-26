@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=51 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
 [ext_resource type="Texture2D" uid="uid://6kpvi5x7vyc4" path="res://assets/sprites/PlayerShadow.png" id="2_lh0nq"]
@@ -18,6 +18,14 @@
 [ext_resource type="Script" path="res://scripts/proejctile_weapon.gd" id="13_mvsuu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_op8pd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtxye"]
+bg_color = Color(0.388235, 0.145098, 0.25098, 1)
+shadow_color = Color(0.388235, 0.145098, 0.25098, 1)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqnpn"]
+bg_color = Color(0.847059, 0.819608, 0.458824, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nn2cy"]
 radius = 400.0
@@ -252,6 +260,12 @@ _data = {
 "flash": SubResource("Animation_x1cc1")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u7go"]
+bg_color = Color(0.686275, 0.305882, 0.470588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkvlo"]
+bg_color = Color(0.941176, 0.490196, 0.686275, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_4k555")
@@ -288,21 +302,18 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HealthBar" type="ProgressBar" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="XPBar" type="ProgressBar" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rtxye")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nqnpn")
+allow_greater = true
 
 [node name="TimerLable" type="Label" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "perkele
-"
+theme_override_colors/font_color = Color(0.388235, 0.145098, 0.25098, 1)
+theme_override_font_sizes/font_size = 42
+text = "Time Left"
 horizontal_alignment = 1
-
-[node name="XPBar" type="ProgressBar" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-allow_greater = true
-show_percentage = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
 collision_layer = 4
@@ -419,6 +430,16 @@ volume_db = -10.0
 libraries = {
 "": SubResource("AnimationLibrary_4m6q2")
 }
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -60.0
+offset_top = 66.0
+offset_right = 65.0
+offset_bottom = 81.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4u7go")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qkvlo")
+value = 50.0
+show_percentage = false
 
 [connection signal="gained_health" from="Health" to="." method="_on_health_gained_health"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

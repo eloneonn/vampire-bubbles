@@ -3,7 +3,7 @@ extends CharacterBody2D
 const speed = 700.0
 @onready var health: Health = $Health
 @onready var time_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/TimerLable
-@onready var health_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HealthBar
+@onready var health_bar: ProgressBar = $HealthBar
 @onready var xp_bar: ProgressBar = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/XPBar
 @onready var player_animations: AnimatedSprite2D = $PlayerAnimations
 @onready var claw: Weapon = $Claw
