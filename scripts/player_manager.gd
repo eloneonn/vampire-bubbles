@@ -36,6 +36,7 @@ func add_kill(amount: int) -> void:
 func reset_stats() -> void:
 	max_health = 100
 	experience = 0
+	current_experience = 0
 	kill_count = 0
 	next_level = 25
 	next_level_absolute = 25
