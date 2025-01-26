@@ -244,7 +244,10 @@ theme_override_font_sizes/font_size = 60
 text = "You lost..."
 horizontal_alignment = 1
 
-[node name="Button" type="TextureButton" parent="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="TextureButton" parent="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/CenterContainer"]
 process_mode = 3
 layout_mode = 2
 texture_normal = ExtResource("6_05ud4")
@@ -473,7 +476,7 @@ process_mode = 3
 volume_db = -7.0
 bus = &"Music"
 
-[connection signal="pressed" from="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/CenterContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
