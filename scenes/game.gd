@@ -10,6 +10,7 @@ extends Node2D
 @onready var upgrade_screen: CanvasLayer = $UpgradeScreen
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var center_container: MarginContainer = $MainMenu/CenterContainer
 
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
@@ -167,3 +168,16 @@ func _on_start_button_pressed() -> void:
 	main_menu.visible = false
 	audio_stream_player_2d.stream = music_track
 	audio_stream_player_2d.play()
+
+#3 settings
+func _on_texture_button_pressed() -> void:
+	center_container.visible = true
+
+## quit
+func _on_texture_button_2_pressed() -> void:
+	pass # Replace with function body.
+
+## back from settings
+func _on_back_pressed() -> void:
+	center_container.visible = false
+	pass # Replace with function body.
