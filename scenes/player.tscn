@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=58 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
 [ext_resource type="Texture2D" uid="uid://6kpvi5x7vyc4" path="res://assets/sprites/PlayerShadow.png" id="2_lh0nq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="2_pjiqv"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_p3m4k"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_yall3"]
+[ext_resource type="Texture2D" uid="uid://c7b28s5c2xf7u" path="res://assets/sprites/killcounticon.png" id="4_5c0c6"]
 [ext_resource type="Texture2D" uid="uid://dytvnasbnig7o" path="res://assets/backgrounds/dying screen.png" id="4_oka7f"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_qfmrt"]
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="5_8vkx0"]
@@ -313,7 +314,7 @@ offset = Vector2(0, 44)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 limit_left = -1470
-limit_top = -582
+limit_top = -630
 limit_right = 3613
 limit_bottom = 2517
 position_smoothing_enabled = true
@@ -347,6 +348,28 @@ theme_override_colors/font_color = Color(0.388235, 0.145098, 0.25098, 1)
 theme_override_font_sizes/font_size = 42
 text = "Time Left"
 horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_5c0c6")
+stretch_mode = 2
+
+[node name="KillCountLable" type="Label" parent="Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.388235, 0.145098, 0.25098, 1)
+theme_override_font_sizes/font_size = 30
+text = "0"
 
 [node name="DyingRect" type="TextureRect" parent="Camera2D/HUD"]
 modulate = Color(1, 1, 1, 0)
