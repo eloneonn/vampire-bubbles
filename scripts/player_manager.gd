@@ -7,7 +7,7 @@ var kill_count: int = 0
 var level: int = 1
 var upgrades: Array[Enums.Upgrade] = []
 var next_level = 25
-var next_level_absolute = 25
+var next_level_absolute = 25 # This should be same as above in the start
 var next_level_modifier = 1.25
 
 signal xp_changed(value:float, max: float)
