@@ -91,6 +91,7 @@ func on_level_up(level: int):
 	var available_upgrades: Array[Enums.Upgrade]
 	
 	available_upgrades.append_array(Utils.ClawUpgrades)
+	available_upgrades.append(Enums.Upgrade.PLAYER_SPEED)
 	
 	if level > 3 and !PlayerManager.has_upgrade(Enums.Upgrade.TAILWHIP):
 		available_upgrades.append(Enums.Upgrade.TAILWHIP)
@@ -120,6 +121,8 @@ func on_level_up(level: int):
 
 func get_card_path(upgrade: Enums.Upgrade):
 	match upgrade:
+		Enums.Upgrade.PLAYER_SPEED:
+			return preload("res://assets/sprites/cards/speed card.png")
 		Enums.Upgrade.HEAL_MINOR:
 			return preload("res://assets/sprites/cards/cardheal1.png")
 		Enums.Upgrade.HEAL_MID:

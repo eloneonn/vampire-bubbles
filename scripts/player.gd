@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 700.0
+var speed = 700.0
 @onready var health: Health = $Health
 @onready var time_label: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/TimerLable
 @onready var health_bar: ProgressBar = $HealthBar
@@ -87,6 +87,8 @@ func _on_xp_change(xp: float, max: float) -> void:
 
 func on_upgrade_receive(upgrade: Enums.Upgrade):
 	match upgrade:
+		Enums.Upgrade.PLAYER_SPEED:
+			speed += speed * 0.25
 		Enums.Upgrade.HEAL_MINOR:
 			health.heal(25)
 		Enums.Upgrade.HEAL_MID:
