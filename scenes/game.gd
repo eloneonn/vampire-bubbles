@@ -9,11 +9,14 @@ extends Node2D
 @onready var pause_menu: CanvasLayer = $PauseMenu
 @onready var upgrade_screen: CanvasLayer = $UpgradeScreen
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
 @onready var upgrade_button_3: TextureButton = %UpgradeButton3
 @onready var start_button: TextureButton = $MainMenu/MarginContainer/CenterContainer/VBoxContainer/StartButton
+
+var music_track = preload("res://assets/music/2_minute_banger.mp3")
 
 var heal_upgrade: Enums.Upgrade
 var upgrade_1: Enums.Upgrade
@@ -160,3 +163,5 @@ func _on_upgrade_button_3_pressed() -> void:
 func _on_start_button_pressed() -> void:
 	animation_player.play("start_game_countdown")
 	main_menu.visible = false
+	audio_stream_player_2d.stream = music_track
+	audio_stream_player_2d.play()
