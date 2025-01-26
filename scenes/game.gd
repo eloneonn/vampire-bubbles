@@ -20,6 +20,7 @@ extends Node2D
 var music_track = preload("res://assets/music/2_minute_banger.mp3")
 var victory_clap = preload("res://assets/sfx/735573__pluralz__clapping-large-crowd-at-choir-concert-13.wav")
 var narrative = preload("res://assets/music/narrative.wav")
+var lost_narrative = preload("res://assets/music/lost_narrative.wav")
 var heal_upgrade: Enums.Upgrade
 var upgrade_1: Enums.Upgrade
 var upgrade_2: Enums.Upgrade
@@ -42,6 +43,8 @@ func _on_restart_button_pressed() -> void:
 	reload_game()
 
 func on_game_end() -> void:
+	audio_stream_player.stream = lost_narrative
+	audio_stream_player.play()
 	game_over_label.text = "You Lost\n" + "You survived for " + str(GameManager.game_duration - GameManager.get_time_float()) + " seconds"
 	game_over_screen.visible = true
 	get_tree().paused = true
