@@ -7,7 +7,6 @@ radius = 49.0
 height = 172.0
 
 [node name="Drain" type="StaticBody2D"]
-collision_layer = 8
 
 [node name="Objects33" type="Sprite2D" parent="."]
 position = Vector2(1, -1)

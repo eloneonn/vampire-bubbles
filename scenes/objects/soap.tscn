@@ -7,7 +7,6 @@ radius = 52.0
 height = 196.0
 
 [node name="Soap" type="StaticBody2D"]
-collision_layer = 8
 
 [node name="Objects21" type="Sprite2D" parent="."]
 position = Vector2(3, 22)

@@ -7,7 +7,6 @@ radius = 51.0
 height = 232.0
 
 [node name="Bob" type="StaticBody2D"]
-collision_layer = 8
 
 [node name="Objects16" type="Sprite2D" parent="."]
 position = Vector2(-1, 9)
