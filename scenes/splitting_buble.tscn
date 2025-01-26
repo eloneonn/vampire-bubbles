@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/splitting_buble.gd" id="1_bpwb1"]
 [ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_6t6ei"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="2_q8rjr"]
-[ext_resource type="Texture2D" uid="uid://c1frjb5am5gfq" path="res://assets/sprites/BUBBLE Mud.png" id="3_cg7is"]
+[ext_resource type="Texture2D" uid="uid://j6siwrwncp2i" path="res://assets/sprites/bubblegum.png" id="3_xpyty"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_yeo6h"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_x35rd"]
 [ext_resource type="Script" path="res://scripts/cleaner.gd" id="7_bosgh"]
@@ -25,6 +25,33 @@ radius = 45.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2m2y4"]
 radius = 45.0
+
+[sub_resource type="Animation" id="Animation_l3xck"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/BooleanParameter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2lmxt"]
 resource_name = "flash"
@@ -54,33 +81,6 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_l3xck"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/BooleanParameter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/BooleanParameter")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0mn4b"]
 _data = {
 "RESET": SubResource("Animation_l3xck"),
@@ -92,7 +92,7 @@ script = ExtResource("1_bpwb1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_j1el8")
-texture = ExtResource("3_cg7is")
+texture = ExtResource("3_xpyty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ft6h8")
