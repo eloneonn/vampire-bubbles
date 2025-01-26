@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=57 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
 [ext_resource type="Texture2D" uid="uid://6kpvi5x7vyc4" path="res://assets/sprites/PlayerShadow.png" id="2_lh0nq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="2_pjiqv"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_p3m4k"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_yall3"]
+[ext_resource type="Texture2D" uid="uid://dytvnasbnig7o" path="res://assets/backgrounds/dying screen.png" id="4_oka7f"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_qfmrt"]
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="5_8vkx0"]
 [ext_resource type="Resource" uid="uid://cvgb2wprs2j54" path="res://resources/claw.tres" id="6_e0ft5"]
@@ -152,7 +153,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 12.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -347,6 +348,12 @@ theme_override_font_sizes/font_size = 42
 text = "Time Left"
 horizontal_alignment = 1
 
+[node name="DyingRect" type="TextureRect" parent="Camera2D/HUD"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_oka7f")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
 collision_layer = 4
 collision_mask = 0
@@ -425,8 +432,10 @@ flip_h = true
 [node name="PlayerAnimations" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_ijma6")
 sprite_frames = SubResource("SpriteFrames_kwj7x")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 flip_h = true
 
 [node name="TailWhip" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]

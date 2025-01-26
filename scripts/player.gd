@@ -14,6 +14,7 @@ const speed = 700.0
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera: PlayerCamera = $Camera2D
+@onready var dying_rect: TextureRect = $Camera2D/HUD/DyingRect
 
 var claw_sound = preload("res://assets/sfx/claw.wav")
 var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
@@ -65,10 +66,20 @@ func _process(delta: float) -> void:
 
 func _on_health_lost_health(amount: float) -> void:
 	animation_player.play("flash")
+	
 	audio_stream_player_2d.stream = meows.pick_random()
 	audio_stream_player_2d.play()
 	camera.apply_shake()
 	health_bar.value = health.health  # Update health bar when damaged
+	
+	if health.health < 25:
+		dying_rect.modulate.a = 1
+	elif health.health < 35:
+		dying_rect.modulate.a = 0.75
+	elif health.health < 50:
+		dying_rect.modulate.a = 0.50
+	else: 
+		dying_rect.modulate.a = 0
 
 func _on_xp_change(xp: float, max: float) -> void:
 	xp_bar.value = xp
