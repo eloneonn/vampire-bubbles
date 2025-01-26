@@ -13,6 +13,7 @@ var next_level_modifier = 1.5
 signal xp_changed(value:float, max: float)
 signal received_upgrade(upgrade: Enums.Upgrade)
 signal level_up(level: int)
+signal kill(count: int)
 
 func add_experience(amount: float) -> void:
 	experience += amount
@@ -30,6 +31,7 @@ func add_experience(amount: float) -> void:
 
 func add_kill(amount: int) -> void:
 	kill_count += amount
+	kill.emit(kill_count)
 
 func reset_stats() -> void:
 	max_health = 100

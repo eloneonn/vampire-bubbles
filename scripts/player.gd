@@ -15,6 +15,7 @@ var speed = 700.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera: PlayerCamera = $Camera2D
 @onready var dying_rect: TextureRect = $Camera2D/HUD/DyingRect
+@onready var kill_count_lable: Label = $Camera2D/HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/KillCountLable
 
 var claw_sound = preload("res://assets/sfx/claw.wav")
 var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
@@ -35,6 +36,7 @@ func _ready():
 	health_bar.value = health.health  # Initialize health bar
 	PlayerManager.xp_changed.connect(_on_xp_change)
 	PlayerManager.received_upgrade.connect(on_upgrade_receive)
+	PlayerManager.kill.connect(on_kill)
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Input.get_vector("left", "right", "up", "down")
@@ -156,3 +158,16 @@ func _on_tail_whip_attack() -> void:
 
 func _on_health_gained_health() -> void:
 	health_bar.value = health.health
+	
+	if health.health < 25:
+		dying_rect.modulate.a = 1
+	elif health.health < 35:
+		dying_rect.modulate.a = 0.75
+	elif health.health < 50:
+		dying_rect.modulate.a = 0.50
+	else: 
+		dying_rect.modulate.a = 0
+
+
+func on_kill(count: int):
+	kill_count_lable.text = str(count)
