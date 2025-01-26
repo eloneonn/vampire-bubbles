@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var bubble: CharacterBody2D = $"."
 @onready var player: CharacterBody2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 const pop_sound = preload("res://assets/sfx/bubble5.wav")
 
@@ -27,12 +28,12 @@ func update_direction() -> void:
 		velocity = direction * SPEED
 
 func _on_health_health_depleted() -> void:
-	PlayerManager.add_experience(1)
+	animation_player.play("flash")
+	PlayerManager.add_experience(GameManager.split_bubble_xp)
 	PlayerManager.add_kill(1)
 	spawn_baby()
 	queue_free()
-	
-	
+
 
 func spawn_baby():
 	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
