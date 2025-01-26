@@ -13,6 +13,7 @@ const speed = 700.0
 @onready var furball: Projectile_Weapon = $Projectile_Weapon
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var camera: PlayerCamera = $Camera2D
 
 var claw_sound = preload("res://assets/sfx/claw.wav")
 var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
@@ -55,10 +56,12 @@ func _process(delta: float) -> void:
 
 func _on_health_lost_health(amount: float) -> void:
 	animation_player.play("flash")
+	camera.apply_shake()
 	health_bar.value = health.health  # Update health bar when damaged
 
-func _on_xp_change(xp: float) -> void:
+func _on_xp_change(xp: float, max: float) -> void:
 	xp_bar.value = xp
+	xp_bar.max_value = max
 
 func on_upgrade_receive(upgrade: Enums.Upgrade):
 	match upgrade:
@@ -72,14 +75,36 @@ func on_upgrade_receive(upgrade: Enums.Upgrade):
 			claw.damage += claw.damage * 0.25
 		Enums.Upgrade.CLAW_SPEED:
 			claw.speed += claw.speed * -0.25
-		#Enums.Upgrade.CLAW_SIZE:
+		Enums.Upgrade.CLAW_SIZE:
+			var hitbox: Area2D = claw.get_node("ClawHitbox")
+			
+			if hitbox:
+				hitbox.global_scale.x += hitbox.global_scale.x * 0.25
+				hitbox.global_scale.y += hitbox.global_scale.y * 0.25
+				
+			var anims: AnimatedSprite2D = claw.get_node("ClawAnimations")
+			
+			if anims:
+				anims.global_scale.x += anims.global_scale.x * 0.25
+				anims.global_scale.y += anims.global_scale.x * 0.25
 		Enums.Upgrade.TAILWHIP:
 			tail_whip.enabled = true
 		Enums.Upgrade.TAILWHIP_DMG:
 			tail_whip.damage += tail_whip.damage * 0.25
 		Enums.Upgrade.TAILWHIP_SPEED:
 			tail_whip.speed += tail_whip.speed * 0.25
-		#Enums.Upgrade.TAILWHIP_SIZE:
+		Enums.Upgrade.TAILWHIP_SIZE:
+			var hitbox: Area2D = tail_whip.get_node("Hitbox")
+			
+			if hitbox:
+				hitbox.global_scale.x += hitbox.global_scale.x * 0.25
+				hitbox.global_scale.y += hitbox.global_scale.y * 0.25
+			
+			var anims: AnimatedSprite2D = tail_whip.get_node("TailWhipAnimations")
+			
+			if anims:
+				anims.global_scale.x += anims.global_scale.x * 0.25
+				anims.global_scale.y += anims.global_scale.x * 0.25
 		Enums.Upgrade.FURBALL:
 			furball.enabled = true
 		Enums.Upgrade.FURBALL_DMG:

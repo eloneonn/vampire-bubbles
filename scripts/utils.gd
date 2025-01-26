@@ -9,13 +9,13 @@ const NewWeapons: Array[Enums.Upgrade] = [
 ]
 
 const ClawUpgrades: Array[Enums.Upgrade] = [
-	Enums.Upgrade.CLAW_DMG, Enums.Upgrade.CLAW_SPEED, #Enums.Upgrade.CLAW_SIZE,
+	Enums.Upgrade.CLAW_DMG, Enums.Upgrade.CLAW_SPEED, Enums.Upgrade.CLAW_SIZE,
 ]
 
 const TailWhipUpgrades: Array[Enums.Upgrade] = [
-	Enums.Upgrade.TAILWHIP, Enums.Upgrade.TAILWHIP_DMG, Enums.Upgrade.TAILWHIP_SPEED, #Enums.Upgrade.TAILWHIP_SIZE,
+	Enums.Upgrade.TAILWHIP_DMG, Enums.Upgrade.TAILWHIP_SPEED, Enums.Upgrade.TAILWHIP_SIZE,
 ]
 
 const FurballUpgrades: Array[Enums.Upgrade] = [
-	Enums.Upgrade.FURBALL, Enums.Upgrade.FURBALL_DMG, Enums.Upgrade.FURBALL_PROJECTILE, #Enums.Upgrade.FURBALL_SPEED
+	Enums.Upgrade.FURBALL_DMG, Enums.Upgrade.FURBALL_PROJECTILE, Enums.Upgrade.FURBALL_SPEED
 ]

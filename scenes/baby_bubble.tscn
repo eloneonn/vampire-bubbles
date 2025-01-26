@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cuvsjvmdmmmyy"]
+[gd_scene load_steps=12 format=3 uid="uid://cuvsjvmdmmmyy"]
 
 [ext_resource type="Script" path="res://scripts/baby_bubble.gd" id="1_qxy7b"]
 [ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_aipwr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://j6siwrwncp2i" path="res://assets/sprites/bubblegum.png" id="3_7xfmp"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_6ltoh"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_re5w6"]
+[ext_resource type="Script" path="res://scripts/cleaner.gd" id="7_rgwrc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_reaef"]
 resource_local_to_scene = true
@@ -59,5 +60,8 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_gb3d6")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Cleaner" type="Node2D" parent="."]
+script = ExtResource("7_rgwrc")
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

@@ -8,6 +8,7 @@ var split = preload("res://scenes/splitting_buble.tscn")
 @onready var timer: Timer = Timer.new()
 @export var spawn_interval: float = 1
 @export var max_spawn_interval: float = 4
+@export var min_spawn_interval: float = 0.1
 
 func _ready():
 	add_child(timer)
@@ -22,7 +23,9 @@ func start_game():
 	timer.start()
 
 func spawn_enemy():
-	timer.wait_time = max_spawn_interval * (1 - GameManager.get_progress())
+	var progress = GameManager.get_progress()
+	
+	timer.wait_time = lerp(max_spawn_interval, min_spawn_interval, pow(progress, 2))
 	
 	var enemies: Array = [basic]
 	

@@ -8,6 +8,7 @@ extends Node2D
 @onready var check_button: CheckButton = $MainMenu/MarginContainer/CenterContainer/VBoxContainer/CheckButton
 @onready var pause_menu: CanvasLayer = $PauseMenu
 @onready var upgrade_screen: CanvasLayer = $UpgradeScreen
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
@@ -55,8 +56,11 @@ func reload_game():
 	get_tree().reload_current_scene()
 
 func _on_start_game_pressed() -> void:
-	get_tree().paused = false
+	animation_player.play("start_game_countdown")
 	main_menu.visible = false
+
+func start_game():
+	get_tree().paused = false
 	GameManager.start_game()
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
@@ -73,36 +77,36 @@ func _on_back_to_menu_pressed() -> void:
 func on_level_up(level: int):
 	get_tree().paused = true
 	upgrade_screen.visible = true
-	
-	var tailwhip_unlock = 3
-	var furball_unlock = 5
+	upgrade_1 = -1
+	upgrade_2 = -1
 	
 	heal_upgrade = Utils.Heals.pick_random()
-
-	var available_upgrades = Utils.ClawUpgrades
+	
+	var available_upgrades: Array[Enums.Upgrade]
+	
+	available_upgrades.append_array(Utils.ClawUpgrades)
 	
 	if level > 3 and !PlayerManager.has_upgrade(Enums.Upgrade.TAILWHIP):
 		available_upgrades.append(Enums.Upgrade.TAILWHIP)
+		upgrade_1 = Enums.Upgrade.TAILWHIP
 	
 	if level > 5 and !PlayerManager.has_upgrade(Enums.Upgrade.FURBALL):
 		available_upgrades.append(Enums.Upgrade.FURBALL)
+		if upgrade_1 == -1:
+			upgrade_1 = Enums.Upgrade.FURBALL
 	
 	if PlayerManager.has_upgrade(Enums.Upgrade.TAILWHIP):
 		available_upgrades.append_array(Utils.TailWhipUpgrades)
 	
 	if PlayerManager.has_upgrade(Enums.Upgrade.FURBALL):
 		available_upgrades.append_array(Utils.FurballUpgrades)
-	
-	if available_upgrades.find(Enums.Upgrade.TAILWHIP) != -1:
-		upgrade_1 = Enums.Upgrade.TAILWHIP
-	elif available_upgrades.find(Enums.Upgrade.FURBALL) != -1:
-		upgrade_1 = Enums.Upgrade.FURBALL
-	else:
+		
+	if upgrade_1 == -1:
 		upgrade_1 = available_upgrades.pick_random()
 	
 	var new_upgrades = available_upgrades.filter(func(x): return x != upgrade_1)
 	
-	upgrade_2 = available_upgrades.pick_random()
+	upgrade_2 = new_upgrades.pick_random()
 	
 	upgrade_button_1.texture_normal = get_card_path(upgrade_1)
 	upgrade_button_2.texture_normal = get_card_path(heal_upgrade)
@@ -121,7 +125,7 @@ func get_card_path(upgrade: Enums.Upgrade):
 		Enums.Upgrade.CLAW_SPEED:
 			return preload("res://assets/sprites/cards/cardclaw2.png")
 		Enums.Upgrade.CLAW_SIZE:
-			print("cardclaw3.png")
+			return preload("res://assets/sprites/cards/cardclaw3.png")
 		Enums.Upgrade.TAILWHIP:
 			return preload("res://assets/sprites/cards/cardtailwip1.png")
 		Enums.Upgrade.TAILWHIP_DMG:
@@ -129,16 +133,15 @@ func get_card_path(upgrade: Enums.Upgrade):
 		Enums.Upgrade.TAILWHIP_SPEED:
 			return preload("res://assets/sprites/cards/cardtailwip3.png")
 		Enums.Upgrade.TAILWHIP_SIZE:
-			print("cardtailwip4.png")
+			return preload("res://assets/sprites/cards/cardtailwip4.png")
 		Enums.Upgrade.FURBALL:
 			return preload("res://assets/sprites/cards/cardfurball1.png")
 		Enums.Upgrade.FURBALL_DMG:
 			return preload("res://assets/sprites/cards/cardfurball2.png")
 		Enums.Upgrade.FURBALL_SPEED:
-			print("cardfurball4.png")
+			return preload("res://assets/sprites/cards/cardfurball4.png")
 		Enums.Upgrade.FURBALL_PROJECTILE:
 			return preload("res://assets/sprites/cards/cardfurball3.png")
-
 
 func _on_upgrade_button_1_pressed() -> void:
 	PlayerManager.add_upgrade(upgrade_1)
