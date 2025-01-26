@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cf0knm48erqbj"]
+[gd_scene load_steps=56 format=3 uid="uid://cf0knm48erqbj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4k555"]
 [ext_resource type="Texture2D" uid="uid://6kpvi5x7vyc4" path="res://assets/sprites/PlayerShadow.png" id="2_lh0nq"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/weapon_type.gd" id="11_jmj4k"]
 [ext_resource type="Texture2D" uid="uid://w0kkfm4pwnpl" path="res://assets/sprites/VB_TailWhip.png" id="11_tgftn"]
 [ext_resource type="Script" path="res://scripts/proejctile_weapon.gd" id="13_mvsuu"]
+[ext_resource type="Texture2D" uid="uid://o6gn8d0yvok0" path="res://assets/sprites/idle.png" id="13_t28tw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_op8pd"]
 
@@ -99,6 +100,22 @@ shader_parameter/Tint = Color(1, 1, 1, 1)
 atlas = ExtResource("2_nnqnq")
 region = Rect2(0, 0, 102, 84)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o7mp"]
+atlas = ExtResource("13_t28tw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnhlt"]
+atlas = ExtResource("13_t28tw")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_panu5"]
+atlas = ExtResource("13_t28tw")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e12f"]
+atlas = ExtResource("13_t28tw")
+region = Rect2(384, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2yq1"]
 atlas = ExtResource("9_iwlcg")
 region = Rect2(0, 0, 128, 128)
@@ -120,10 +137,22 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kuoak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o7mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnhlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_panu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e12f")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
-"speed": 1.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -396,7 +425,8 @@ flip_h = true
 [node name="PlayerAnimations" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_ijma6")
 sprite_frames = SubResource("SpriteFrames_kwj7x")
-animation = &"idle"
+animation = &"walk"
+autoplay = "idle"
 flip_h = true
 
 [node name="TailWhip" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]

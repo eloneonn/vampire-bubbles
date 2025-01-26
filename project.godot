@@ -13,6 +13,7 @@ config_version=5
 config/name="Vampire Bubbles"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://assets/backgrounds/loading screen.png"
 config/icon="res://icon.svg"
 "<<<<<<<HEAD[autoload]GameManager"="*res://scripts/game_manager.gd"
 
