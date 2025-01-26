@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4stwgyr44k64"]
+[gd_scene load_steps=14 format=3 uid="uid://4stwgyr44k64"]
 
 [ext_resource type="Script" path="res://scripts/ghost_bubble.gd" id="1_0nxrg"]
 [ext_resource type="Texture2D" uid="uid://ck5boet6w7704" path="res://assets/sprites/BUBBLE Ghost.png" id="2_hwdug"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_3bbvq"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_wqx5q"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_vfic8"]
+[ext_resource type="Script" path="res://scripts/cleaner.gd" id="7_sryu7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b168w"]
 resource_local_to_scene = true
@@ -70,6 +71,9 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Cleaner" type="Node2D" parent="."]
+script = ExtResource("7_sryu7")
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="lost_health" from="Health" to="." method="_on_health_lost_health"]
