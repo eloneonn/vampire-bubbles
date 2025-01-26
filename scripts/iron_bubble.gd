@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var hitbox: Hitbox = $Hitbox
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var poppingFX = preload("res://scenes/death_particle.tscn")
 
 const pop_sound = preload("res://assets/sfx/bubble3.wav")
 const clang_sound = preload("res://assets/sfx/steelbubble.wav")
@@ -43,11 +46,18 @@ func _on_health_health_depleted() -> void:
 	if hitbox:
 		hitbox.enabled = false
 		
+	#popping effect
+	var pop = poppingFX.instantiate()
+	get_tree().root.add_child(pop)
+	pop.global_position = self.global_position
+	pop.emitting = true
+	
 	await get_tree().create_timer(0.9).timeout
 	
 	queue_free()
 
 func _on_health_lost_health(amount: float) -> void:
+	animation_player.play("flash")
 	var random_pitch = randf_range(GameManager.pitch_MIN, GameManager.pitch_MAX)
 	audio_stream_player_2d.pitch_scale = random_pitch
 	audio_stream_player_2d.stream = clang_sound

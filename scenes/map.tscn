@@ -1,9 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs7afodpendgk"]
+[gd_scene load_steps=13 format=3 uid="uid://bs7afodpendgk"]
 
 [ext_resource type="Texture2D" uid="uid://cu5q1k37if3rn" path="res://assets/backgrounds/Walls/WallCorner.png" id="1_mfd86"]
 [ext_resource type="Texture2D" uid="uid://dgbk4kcx1lqqs" path="res://assets/backgrounds/Walls/WallHorizontal.png" id="2_58ggs"]
 [ext_resource type="Texture2D" uid="uid://dy45rjjfaexdc" path="res://assets/backgrounds/Walls/WallVertical.png" id="3_aiqcj"]
 [ext_resource type="Texture2D" uid="uid://70st8rbl4g00" path="res://assets/backgrounds/tile4.png" id="4_ua4gg"]
+[ext_resource type="Shader" uid="uid://dkv4t0mjjiyks" path="res://assets/Materials/mapTexture.tres" id="5_ht4du"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2a1eg"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kjluv"]
+noise = SubResource("FastNoiseLite_2a1eg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5dio"]
+shader = ExtResource("5_ht4du")
+shader_parameter/FloatParameter = 0.35
+shader_parameter/tex_frg_2 = SubResource("NoiseTexture2D_kjluv")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rfqt1"]
 distance = -2468.0
@@ -23,6 +35,7 @@ distance = -3565.0
 [node name="Map" type="StaticBody2D"]
 
 [node name="Walls Sprites" type="Node2D" parent="."]
+z_index = 1
 position = Vector2(-1449, -560)
 
 [node name="WallCorner" type="Sprite2D" parent="Walls Sprites"]
@@ -113,6 +126,14 @@ texture_repeat = 2
 texture = ExtResource("4_ua4gg")
 texture_rotation = -0.436332
 polygon = PackedVector2Array(-1443, -553, -1421, 2490, 3591, 2484, 3584, -542)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_l5dio")
+offset_left = -1447.0
+offset_top = -560.0
+offset_right = 3591.0
+offset_bottom = 2483.0
 
 [node name="Lower" type="CollisionShape2D" parent="."]
 shape = SubResource("WorldBoundaryShape2D_rfqt1")

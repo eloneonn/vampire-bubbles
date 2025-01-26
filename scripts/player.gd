@@ -20,8 +20,15 @@ var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
 var furball_sound = preload("res://assets/sfx/cough.wav")
 
 var is_moving: bool = false  # Track movement
+var meows = [
+preload("res://assets/sfx/meow1.wav"),
+preload("res://assets/sfx/meow2.wav"),
+preload("res://assets/sfx/meow3.wav")	
+]
+var death_meow = preload("res://assets/sfx/deathmeow.wav")
 
 func _ready():
+	animation_player.play("RESET")
 	health.MAX_HEALTH = PlayerManager.max_health
 	health_bar.max_value = health.MAX_HEALTH  # Set max health for the bar
 	health_bar.value = health.health  # Initialize health bar
@@ -49,6 +56,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_health_health_depleted() -> void:
+	audio_stream_player_2d.stream = death_meow
+	audio_stream_player_2d.play()
 	GameManager.end_game()
 
 func _process(delta: float) -> void:
@@ -56,6 +65,8 @@ func _process(delta: float) -> void:
 
 func _on_health_lost_health(amount: float) -> void:
 	animation_player.play("flash")
+	audio_stream_player_2d.stream = meows.pick_random()
+	audio_stream_player_2d.play()
 	camera.apply_shake()
 	health_bar.value = health.health  # Update health bar when damaged
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy84uoawquacy"]
+[gd_scene load_steps=4 format=3 uid="uid://dy84uoawquacy"]
 
 [ext_resource type="Texture2D" uid="uid://cmac55iqic55l" path="res://assets/sprites/Particles.png" id="1_o0kwd"]
-[ext_resource type="Texture2D" uid="uid://djlihc0cwfp1l" path="res://assets/sprites/bubblesoap.png" id="2_3n1vu"]
 
 [sub_resource type="Gradient" id="Gradient_50j14"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -12,8 +11,10 @@ point_count = 2
 
 [node name="DeathParticle" type="CPUParticles2D"]
 use_parent_material = true
+emitting = false
 amount = 25
 lifetime = 0.5
+one_shot = true
 explosiveness = 1.0
 randomness = 0.1
 lifetime_randomness = 0.7
@@ -28,7 +29,3 @@ initial_velocity_max = 500.0
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_50j14")
 anim_offset_curve = SubResource("Curve_2tm3v")
-
-[node name="Bubblesoap" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
-texture = ExtResource("2_3n1vu")

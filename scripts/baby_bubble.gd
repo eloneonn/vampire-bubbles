@@ -4,9 +4,11 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+@onready var poppingFX = preload("res://scenes/death_particle.tscn")
+
 const pop_sound = preload("res://assets/sfx/bubble4.wav")
 
-const SPEED = 300.0
+const SPEED = 400.0
 
 @export var update_interval: float = 0.5  # Time in seconds between AI updates
 var ai_timer: float = 0.0
@@ -34,4 +36,12 @@ func _on_health_health_depleted() -> void:
 	
 	PlayerManager.add_experience(GameManager.baby_bubble_xp)
 	PlayerManager.add_kill(1)
+	
+	#popping effect
+	var pop = poppingFX.instantiate()
+	get_tree().root.add_child(pop)
+	pop.global_position = self.global_position
+	pop.emitting = true
+	
+
 	queue_free()

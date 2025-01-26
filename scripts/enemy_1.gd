@@ -19,7 +19,7 @@ func _physics_process(delta):
 		var direction = (mouse_pos - global_position).normalized()
 		velocity = direction * SPEED
 		
-		if velocity.x > 0:
+		if velocity.x < 0:
 			animated_sprite.flip_h = true
 		else:
 			animated_sprite.flip_h = false
