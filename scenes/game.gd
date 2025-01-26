@@ -11,6 +11,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var center_container: MarginContainer = $MainMenu/CenterContainer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
@@ -166,8 +167,8 @@ func _on_upgrade_button_3_pressed() -> void:
 func _on_start_button_pressed() -> void:
 	animation_player.play("start_game_countdown")
 	main_menu.visible = false
-	audio_stream_player_2d.stream = music_track
-	audio_stream_player_2d.play()
+	audio_stream_player.stream = music_track
+	audio_stream_player.play()
 
 #3 settings
 func _on_texture_button_pressed() -> void:
