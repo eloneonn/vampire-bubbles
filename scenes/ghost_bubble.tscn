@@ -71,6 +71,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [node name="Cleaner" type="Node2D" parent="."]
 script = ExtResource("7_sryu7")
