@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuvsjvmdmmmyy"]
+[gd_scene load_steps=12 format=3 uid="uid://805ckwsfidlv"]
 
 [ext_resource type="Script" path="res://scripts/baby_bubble.gd" id="1_qxy7b"]
 [ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_aipwr"]
