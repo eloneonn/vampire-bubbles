@@ -44,7 +44,7 @@ func on_game_end() -> void:
 	get_tree().paused = true
 
 func on_victory() -> void:
-	victory_label.text = "You Win!!!\n" + "You destroyed " + str(PlayerManager.kill_count)
+	victory_label.text = "You Win!!!\n" + "You destroyed " + str(PlayerManager.kill_count) + " bubbles"
 	audio_stream_player.stream = victory_clap
 	audio_stream_player.play()
 	victory_screen.visible = true
