@@ -269,6 +269,7 @@ bg_color = Color(0.686275, 0.305882, 0.470588, 1)
 bg_color = Color(0.941176, 0.490196, 0.686275, 1)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_4k555")
 

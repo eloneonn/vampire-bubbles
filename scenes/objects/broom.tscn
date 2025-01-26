@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://coxtryk0v3t8s"]
+
+[ext_resource type="Texture2D" uid="uid://cp4ulhdu3350x" path="res://assets/backgrounds/objects/objects_27.png" id="1_whpun"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ciqil"]
+radius = 52.2519
+height = 441.532
+
+[node name="Broom" type="StaticBody2D"]
+collision_layer = 8
+
+[node name="Objects27" type="Sprite2D" parent="."]
+position = Vector2(12, 27)
+texture = ExtResource("1_whpun")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.74533
+shape = SubResource("CapsuleShape2D_ciqil")

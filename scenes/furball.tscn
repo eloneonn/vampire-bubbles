@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/furball.gd" id="1_ct25k"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_apajx"]
-[ext_resource type="Texture2D" uid="uid://btaeeusesc74a" path="res://assets/sprites/VB_FurBallAttack.png" id="3_pgjw7"]
+[ext_resource type="Texture2D" uid="uid://c2b6d2fv7oqop" path="res://assets/sprites/VB_FurBallAttack.png" id="3_pgjw7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k53ii"]
 radius = 45.0

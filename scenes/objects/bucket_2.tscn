@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtlexdfv6ocxq"]
+
+[ext_resource type="Texture2D" uid="uid://bcx1ge2f1ysyx" path="res://assets/backgrounds/objects/objects_06.png" id="1_prgbp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sg2q8"]
+radius = 66.0
+height = 154.0
+
+[node name="Bucket 2" type="StaticBody2D"]
+collision_layer = 8
+
+[node name="Objects06" type="Sprite2D" parent="."]
+position = Vector2(-3, 8)
+texture = ExtResource("1_prgbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sg2q8")

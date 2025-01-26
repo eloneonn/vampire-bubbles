@@ -1,10 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs7afodpendgk"]
+[gd_scene load_steps=23 format=3 uid="uid://bs7afodpendgk"]
 
 [ext_resource type="Texture2D" uid="uid://cu5q1k37if3rn" path="res://assets/backgrounds/Walls/WallCorner.png" id="1_mfd86"]
 [ext_resource type="Texture2D" uid="uid://dgbk4kcx1lqqs" path="res://assets/backgrounds/Walls/WallHorizontal.png" id="2_58ggs"]
 [ext_resource type="Texture2D" uid="uid://dy45rjjfaexdc" path="res://assets/backgrounds/Walls/WallVertical.png" id="3_aiqcj"]
 [ext_resource type="Texture2D" uid="uid://70st8rbl4g00" path="res://assets/backgrounds/tile4.png" id="4_ua4gg"]
 [ext_resource type="Shader" uid="uid://dkv4t0mjjiyks" path="res://assets/Materials/mapTexture.tres" id="5_ht4du"]
+[ext_resource type="PackedScene" uid="uid://batj325k2es3w" path="res://scenes/objects/bucket.tscn" id="6_ktamg"]
+[ext_resource type="PackedScene" uid="uid://coxtryk0v3t8s" path="res://scenes/objects/broom.tscn" id="7_kbjbc"]
+[ext_resource type="PackedScene" uid="uid://dtlexdfv6ocxq" path="res://scenes/objects/bucket_2.tscn" id="8_4vguj"]
+[ext_resource type="PackedScene" uid="uid://1fhgxicer7da" path="res://scenes/objects/drain.tscn" id="9_pvraw"]
+[ext_resource type="PackedScene" uid="uid://dei3ideghcn8m" path="res://scenes/objects/toilet.tscn" id="10_uuvt7"]
+[ext_resource type="PackedScene" uid="uid://bstmaknkgbtbc" path="res://scenes/objects/urn.tscn" id="11_3jwl0"]
+[ext_resource type="PackedScene" uid="uid://bltjwwfxy7t6m" path="res://scenes/objects/vase.tscn" id="12_a01rb"]
+[ext_resource type="PackedScene" uid="uid://ccbytmyfaoxjr" path="res://scenes/objects/bob.tscn" id="13_r1c67"]
+[ext_resource type="PackedScene" uid="uid://co3f6pbu62fn0" path="res://scenes/objects/soap.tscn" id="14_ikr1h"]
+[ext_resource type="PackedScene" uid="uid://cy0ka5lnleucu" path="res://scenes/objects/duck.tscn" id="15_r88al"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2a1eg"]
 noise_type = 2
@@ -146,3 +156,79 @@ shape = SubResource("WorldBoundaryShape2D_3mwfk")
 
 [node name="Right" type="CollisionShape2D" parent="."]
 shape = SubResource("WorldBoundaryShape2D_7wcj0")
+
+[node name="Bucket" parent="." instance=ExtResource("6_ktamg")]
+position = Vector2(-122, 426)
+
+[node name="Broom" parent="." instance=ExtResource("7_kbjbc")]
+position = Vector2(-58.9999, 2065)
+scale = Vector2(1.865, 1.865)
+
+[node name="Bucket 2" parent="." instance=ExtResource("8_4vguj")]
+position = Vector2(-612, 1844)
+
+[node name="Drain" parent="." instance=ExtResource("9_pvraw")]
+position = Vector2(3069, 1038)
+
+[node name="toilet" parent="." instance=ExtResource("10_uuvt7")]
+position = Vector2(2728, 1484)
+scale = Vector2(-1, 1)
+
+[node name="urn" parent="." instance=ExtResource("11_3jwl0")]
+position = Vector2(2481, -92)
+
+[node name="urn2" parent="." instance=ExtResource("11_3jwl0")]
+position = Vector2(2738, -195)
+scale = Vector2(-1.71, 1.71)
+
+[node name="urn3" parent="." instance=ExtResource("11_3jwl0")]
+position = Vector2(2737, 60)
+scale = Vector2(-1, 1)
+
+[node name="vase" parent="." instance=ExtResource("12_a01rb")]
+position = Vector2(1714, 987)
+scale = Vector2(-1, 1)
+
+[node name="Bob" parent="." instance=ExtResource("13_r1c67")]
+position = Vector2(-103, 517)
+
+[node name="Soap" parent="." instance=ExtResource("14_ikr1h")]
+position = Vector2(983, 135)
+
+[node name="Duck" parent="." instance=ExtResource("15_r88al")]
+position = Vector2(1092, 181)
+
+[node name="toilet2" parent="." instance=ExtResource("10_uuvt7")]
+position = Vector2(-967, -67)
+scale = Vector2(1.335, 1.335)
+
+[node name="Duck2" parent="." instance=ExtResource("15_r88al")]
+position = Vector2(-795, 162)
+
+[node name="Broom2" parent="." instance=ExtResource("7_kbjbc")]
+position = Vector2(2548, 567)
+
+[node name="Drain2" parent="." instance=ExtResource("9_pvraw")]
+position = Vector2(1425, 2261)
+
+[node name="Soap2" parent="." instance=ExtResource("14_ikr1h")]
+position = Vector2(236, 1449)
+
+[node name="Duck3" parent="." instance=ExtResource("15_r88al")]
+position = Vector2(1352, 1985)
+scale = Vector2(2.805, 2.805)
+
+[node name="urn4" parent="." instance=ExtResource("11_3jwl0")]
+position = Vector2(-896, 1321)
+
+[node name="vase2" parent="." instance=ExtResource("12_a01rb")]
+position = Vector2(-1136, 1089)
+
+[node name="Bucket 3" parent="." instance=ExtResource("8_4vguj")]
+position = Vector2(1152, 1325)
+
+[node name="Bob2" parent="." instance=ExtResource("13_r1c67")]
+position = Vector2(2532, 2033)
+
+[node name="Broom3" parent="." instance=ExtResource("7_kbjbc")]
+position = Vector2(2208, 2165)

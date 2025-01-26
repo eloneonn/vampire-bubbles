@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
-[ext_resource type="PackedScene" uid="uid://bb1g5pqn04cbd" path="res://scenes/enemy_1.tscn" id="3_katr8"]
+[ext_resource type="PackedScene" uid="uid://6763pew6gisq" path="res://scenes/enemy_1.tscn" id="3_katr8"]
 [ext_resource type="PackedScene" uid="uid://bs7afodpendgk" path="res://scenes/map.tscn" id="4_eut1i"]
 [ext_resource type="Texture2D" uid="uid://dllgd11782nqa" path="res://assets/backgrounds/titlescreen.png" id="5_6vwkc"]
 [ext_resource type="Texture2D" uid="uid://bjn0t4homw7m3" path="res://assets/backgrounds/play button.png" id="6_jm38m"]
@@ -426,6 +426,7 @@ layout_mode = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
+position = Vector2(126, 77)
 volume_db = 5.0
 autoplay = true
 bus = &"Music"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy0ka5lnleucu"]
+
+[ext_resource type="Texture2D" uid="uid://djp348nsxsy0t" path="res://assets/backgrounds/objects/objects_09.png" id="1_rs5fe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymq7h"]
+radius = 57.0
+height = 114.0
+
+[node name="Duck" type="StaticBody2D"]
+collision_layer = 8
+
+[node name="Objects09" type="Sprite2D" parent="."]
+position = Vector2(4, 7)
+texture = ExtResource("1_rs5fe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ymq7h")

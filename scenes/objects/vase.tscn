@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bltjwwfxy7t6m"]
+
+[ext_resource type="Texture2D" uid="uid://dpfgp2p5yy486" path="res://assets/backgrounds/objects/objects_30.png" id="1_w8f8s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onm6o"]
+radius = 68.0
+height = 288.0
+
+[node name="vase" type="StaticBody2D"]
+collision_layer = 8
+
+[node name="Objects30" type="Sprite2D" parent="."]
+position = Vector2(8, -1)
+texture = ExtResource("1_w8f8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_onm6o")

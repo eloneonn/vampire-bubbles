@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://batj325k2es3w"]
+
+[ext_resource type="Texture2D" uid="uid://dxskxs0op8yj2" path="res://assets/backgrounds/objects/objects_03.png" id="1_7dk0q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4h5mt"]
+radius = 85.0235
+
+[node name="Bucket" type="StaticBody2D"]
+collision_layer = 8
+
+[node name="Objects03" type="Sprite2D" parent="."]
+position = Vector2(11, 10)
+texture = ExtResource("1_7dk0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_4h5mt")
