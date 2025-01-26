@@ -12,7 +12,7 @@ extends CharacterBody2D
 const pop_sound = preload("res://assets/sfx/bubble3.wav")
 const ow_sound = preload("res://assets/sfx/ghostbubble.wav")
 
-const SPEED = 100.0
+const SPEED = 250.0
 const WAVE_AMPLITUDE = 300.0  # How far the enemy sways
 const WAVE_FREQUENCY = 4.0  # How fast it sways
 var time_elapsed = 0.0
