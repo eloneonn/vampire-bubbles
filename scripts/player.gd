@@ -20,14 +20,13 @@ var tailwhip_sound = preload("res://assets/sfx/tailwhip1.wav")
 var furball_sound = preload("res://assets/sfx/cough.wav")
 
 var is_moving: bool = false  # Track movement
-var meow1 = preload("res://assets/sfx/meow1.wav")
-var meow2 = preload("res://assets/sfx/meow2.wav")
-var meow3 = preload("res://assets/sfx/meow3.wav")
 var meows = [
 preload("res://assets/sfx/meow1.wav"),
 preload("res://assets/sfx/meow2.wav"),
 preload("res://assets/sfx/meow3.wav")	
 ]
+var death_meow = preload("res://assets/sfx/deathmeow.wav")
+
 func _ready():
 	animation_player.play("RESET")
 	health.MAX_HEALTH = PlayerManager.max_health
@@ -57,6 +56,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_health_health_depleted() -> void:
+	audio_stream_player_2d.stream = death_meow
+	audio_stream_player_2d.play()
 	GameManager.end_game()
 
 func _process(delta: float) -> void:
