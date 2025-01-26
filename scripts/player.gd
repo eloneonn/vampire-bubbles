@@ -29,6 +29,7 @@ preload("res://assets/sfx/meow2.wav"),
 preload("res://assets/sfx/meow3.wav")	
 ]
 func _ready():
+	animation_player.play("RESET")
 	health.MAX_HEALTH = PlayerManager.max_health
 	health_bar.max_value = health.MAX_HEALTH  # Set max health for the bar
 	health_bar.value = health.health  # Initialize health bar

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8soi2nqpll22"]
+[gd_scene load_steps=13 format=3 uid="uid://brcuxf7gihes6"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_78a5o"]
 [ext_resource type="Shader" path="res://assets/Materials/shadertest.gdshader" id="2_bdyc5"]
@@ -15,6 +15,8 @@ shader = ExtResource("2_bdyc5")
 shader_parameter/time_offset = null
 shader_parameter/time_speed = 3.15
 shader_parameter/scale_y = 1.066
+shader_parameter/BooleanParameter = false
+shader_parameter/Tint = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkpxv"]
 radius = 40.0
