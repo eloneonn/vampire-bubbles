@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb1g5pqn04cbd"]
+[gd_scene load_steps=12 format=3 uid="uid://bb1g5pqn04cbd"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_b2k88"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_xnyqi"]
@@ -10,29 +10,36 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8b3g"]
 radius = 60.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3t03w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3axe"]
 atlas = ExtResource("4_dchsy")
-region = Rect2(0, 0, 123, 72)
+region = Rect2(0, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jclxi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj01g"]
 atlas = ExtResource("4_dchsy")
-region = Rect2(123, 0, 123, 72)
+region = Rect2(256, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4tn6c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jeua"]
 atlas = ExtResource("4_dchsy")
-region = Rect2(246, 0, 123, 72)
+region = Rect2(512, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn8wm"]
+atlas = ExtResource("4_dchsy")
+region = Rect2(768, 0, 256, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8jrgm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3t03w")
+"texture": SubResource("AtlasTexture_v3axe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jclxi")
+"texture": SubResource("AtlasTexture_yj01g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4tn6c")
+"texture": SubResource("AtlasTexture_4jeua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn8wm")
 }],
 "loop": true,
 "name": &"default",
@@ -61,7 +68,11 @@ shape = SubResource("CircleShape2D_f8b3g")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("4_4xbm4")
+max_spawn_interval = 1.0
+min_spawn_interval = 0.01
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8jrgm")
-frame_progress = 0.623324
+autoplay = "default"
+frame = 2
+frame_progress = 0.920371
