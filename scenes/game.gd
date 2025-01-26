@@ -13,6 +13,7 @@ extends Node2D
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
 @onready var upgrade_button_3: TextureButton = %UpgradeButton3
+@onready var start_button: TextureButton = $MainMenu/MarginContainer/CenterContainer/VBoxContainer/StartButton
 
 var heal_upgrade: Enums.Upgrade
 var upgrade_1: Enums.Upgrade
@@ -54,10 +55,6 @@ func reload_game():
 	get_tree().paused = false
 	game_over_screen.visible = false
 	get_tree().reload_current_scene()
-
-func _on_start_game_pressed() -> void:
-	animation_player.play("start_game_countdown")
-	main_menu.visible = false
 
 func start_game():
 	get_tree().paused = false
@@ -158,3 +155,8 @@ func _on_upgrade_button_3_pressed() -> void:
 	PlayerManager.add_upgrade(upgrade_2)
 	get_tree().paused = false
 	upgrade_screen.visible = false
+
+
+func _on_start_button_pressed() -> void:
+	animation_player.play("start_game_countdown")
+	main_menu.visible = false
