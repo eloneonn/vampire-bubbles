@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgbk4kcx1lqqs" path="res://assets/backgrounds/Walls/WallHorizontal.png" id="2_58ggs"]
 [ext_resource type="Texture2D" uid="uid://dy45rjjfaexdc" path="res://assets/backgrounds/Walls/WallVertical.png" id="3_aiqcj"]
 [ext_resource type="Texture2D" uid="uid://70st8rbl4g00" path="res://assets/backgrounds/tile4.png" id="4_ua4gg"]
-[ext_resource type="Shader" uid="uid://dkv4t0mjjiyks" path="res://assets/Materials/mapTexture.tres" id="5_ht4du"]
+[ext_resource type="Shader" uid="uid://quqjqbei1n0f" path="res://assets/Materials/mapTexture.tres" id="5_ht4du"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2a1eg"]
 noise_type = 2
