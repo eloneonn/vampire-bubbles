@@ -22,6 +22,7 @@ var furball_sound = preload("res://assets/sfx/cough.wav")
 var is_moving: bool = false  # Track movement
 
 func _ready():
+	animation_player.play("RESET")
 	health.MAX_HEALTH = PlayerManager.max_health
 	health_bar.max_value = health.MAX_HEALTH  # Set max health for the bar
 	health_bar.value = health.health  # Initialize health bar

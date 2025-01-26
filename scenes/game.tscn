@@ -201,6 +201,39 @@ horizontal_alignment = 1
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 visible = false
 
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "You lost"
+
+[node name="Button" type="Button" parent="GameOverScreen/CenterContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+script = SubResource("GDScript_okrbu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverScreen/CenterContainer/VBoxContainer/Button"]
+layout_mode = 0
+
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 visible = false
 
@@ -239,6 +272,7 @@ layout_mode = 0
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu"]
 anchors_preset = 15
@@ -349,6 +383,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[connection signal="pressed" from="GameOverScreen/CenterContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/CenterContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
