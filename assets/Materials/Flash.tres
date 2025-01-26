@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://dr7c6bgqjdq5j"]
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://bfvit0y2gff5w"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_46hyl"]
 parameter_name = "Tint"
@@ -60,7 +60,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-154.914, -43.7857)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(400, 120)

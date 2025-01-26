@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hitbox: Hitbox = $Hitbox
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var poppingFX = preload("res://scenes/death_particle.tscn")
 
@@ -49,3 +50,7 @@ func _on_health_health_depleted() -> void:
 	await get_tree().create_timer(0.9).timeout
 	
 	queue_free()
+
+
+func _on_health_lost_health(amount: float) -> void:
+	animation_player.play("flash")

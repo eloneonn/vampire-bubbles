@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 const pop_sound = preload("res://assets/sfx/bubble4.wav")
 
-const SPEED = 300.0
+const SPEED = 400.0
 
 @export var update_interval: float = 0.5  # Time in seconds between AI updates
 var ai_timer: float = 0.0
