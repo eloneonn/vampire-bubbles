@@ -19,12 +19,15 @@ extends Node2D
 
 var music_track = preload("res://assets/music/2_minute_banger.mp3")
 var victory_clap = preload("res://assets/sfx/735573__pluralz__clapping-large-crowd-at-choir-concert-13.wav")
+var narrative = preload("res://assets/music/narrative.wav")
 var heal_upgrade: Enums.Upgrade
 var upgrade_1: Enums.Upgrade
 var upgrade_2: Enums.Upgrade
 
 func _ready() -> void:
 	main_menu.visible = true
+	audio_stream_player.stream = narrative
+	audio_stream_player.play()
 	get_tree().paused = true
 	GameManager.game_ended.connect(on_game_end)
 	GameManager.victory.connect(on_victory)
