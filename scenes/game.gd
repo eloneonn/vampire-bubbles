@@ -17,7 +17,7 @@ extends Node2D
 @onready var start_button: TextureButton = $MainMenu/MarginContainer/CenterContainer/VBoxContainer/StartButton
 
 var music_track = preload("res://assets/music/2_minute_banger.mp3")
-
+var victory_clap = preload("res://assets/sfx/735573__pluralz__clapping-large-crowd-at-choir-concert-13.wav")
 var heal_upgrade: Enums.Upgrade
 var upgrade_1: Enums.Upgrade
 var upgrade_2: Enums.Upgrade
@@ -44,6 +44,8 @@ func on_game_end() -> void:
 
 func on_victory() -> void:
 	victory_label.text = "You Win!!!\n" + "You destroyed " + str(PlayerManager.kill_count)
+	audio_stream_player_2d.stream = victory_clap
+	audio_stream_player_2d.play()
 	victory_screen.visible = true
 	get_tree().paused = true
 
