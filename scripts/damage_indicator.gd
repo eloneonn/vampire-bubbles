@@ -5,5 +5,5 @@ var damage = 0
 @onready var label: Label = $Label
 
 func _ready() -> void:
-	label.text = str(damage)
+	label.text = "%.1f" % damage
 	animation_player.play("fade")
