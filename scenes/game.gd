@@ -7,7 +7,6 @@ extends Node2D
 @onready var pause_menu: CanvasLayer = $PauseMenu
 @onready var upgrade_screen: CanvasLayer = $UpgradeScreen
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var center_container: MarginContainer = $MainMenu/CenterContainer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var game_over_label: Label = $GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/Label
@@ -16,7 +15,7 @@ extends Node2D
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
 @onready var upgrade_button_3: TextureButton = %UpgradeButton3
-@onready var start_button: TextureButton = $MainMenu/MarginContainer/CenterContainer/VBoxContainer/StartButton
+@onready var start_button: TextureButton = $MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartButton
 
 var music_track = preload("res://assets/music/2_minute_banger.mp3")
 var victory_clap = preload("res://assets/sfx/735573__pluralz__clapping-large-crowd-at-choir-concert-13.wav")
@@ -46,8 +45,8 @@ func on_game_end() -> void:
 
 func on_victory() -> void:
 	victory_label.text = "You Win!!!\n" + "You destroyed " + str(PlayerManager.kill_count)
-	audio_stream_player_2d.stream = victory_clap
-	audio_stream_player_2d.play()
+	audio_stream_player.stream = victory_clap
+	audio_stream_player.play()
 	victory_screen.visible = true
 	get_tree().paused = true
 
