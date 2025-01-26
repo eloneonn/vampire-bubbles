@@ -7,7 +7,6 @@ radius = 104.0
 height = 308.0
 
 [node name="toilet" type="StaticBody2D"]
-collision_layer = 8
 
 [node name="Objects12" type="Sprite2D" parent="."]
 position = Vector2(6, 6)
