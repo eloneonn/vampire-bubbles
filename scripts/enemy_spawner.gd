@@ -6,7 +6,6 @@ var ghost = preload("res://scenes/ghost_bubble.tscn")
 var split = preload("res://scenes/splitting_buble.tscn")
 
 @onready var timer: Timer = Timer.new()
-@export var spawn_interval: float = 1
 @export var max_spawn_interval: float = 4
 @export var min_spawn_interval: float = 0.1
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2b6d2fv7oqop"
-path="res://.godot/imported/VB_FurBallAttack.png-c71249ccd5884ba32af65c533f07f901.ctex"
+uid="uid://c5crslvn78vyl"
+path="res://.godot/imported/blower0001.png-3e2ce1f0dbb4b909a7908e5f443a494b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/VB_FurBallAttack.png"
-dest_files=["res://.godot/imported/VB_FurBallAttack.png-c71249ccd5884ba32af65c533f07f901.ctex"]
+source_file="res://assets/sprites/blower0001.png"
+dest_files=["res://.godot/imported/blower0001.png-3e2ce1f0dbb4b909a7908e5f443a494b.ctex"]
 
 [params]
 

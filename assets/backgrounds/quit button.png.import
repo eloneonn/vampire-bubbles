@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2b6d2fv7oqop"
-path="res://.godot/imported/VB_FurBallAttack.png-c71249ccd5884ba32af65c533f07f901.ctex"
+uid="uid://ci0s4xpxi6v6d"
+path="res://.godot/imported/quit button.png-292c17899aecbff21aa01428f59e13b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/VB_FurBallAttack.png"
-dest_files=["res://.godot/imported/VB_FurBallAttack.png-c71249ccd5884ba32af65c533f07f901.ctex"]
+source_file="res://assets/backgrounds/quit button.png"
+dest_files=["res://.godot/imported/quit button.png-292c17899aecbff21aa01428f59e13b7.ctex"]
 
 [params]
 

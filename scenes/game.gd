@@ -8,6 +8,7 @@ extends Node2D
 @onready var check_button: CheckButton = $MainMenu/MarginContainer/CenterContainer/VBoxContainer/CheckButton
 @onready var pause_menu: CanvasLayer = $PauseMenu
 @onready var upgrade_screen: CanvasLayer = $UpgradeScreen
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
@@ -55,8 +56,11 @@ func reload_game():
 	get_tree().reload_current_scene()
 
 func _on_start_game_pressed() -> void:
-	get_tree().paused = false
+	animation_player.play("start_game_countdown")
 	main_menu.visible = false
+
+func start_game():
+	get_tree().paused = false
 	GameManager.start_game()
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
