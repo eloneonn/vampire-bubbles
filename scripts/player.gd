@@ -76,17 +76,17 @@ func on_upgrade_receive(upgrade: Enums.Upgrade):
 		Enums.Upgrade.CLAW_SPEED:
 			claw.speed += claw.speed * -0.25
 		Enums.Upgrade.CLAW_SIZE:
-			return # TODO FIX THIS AND TAILWHIP SIZE
-			
 			var hitbox: Area2D = claw.get_node("ClawHitbox")
 			
 			if hitbox:
-				hitbox.scale = hitbox.scale * 0.25
+				hitbox.global_scale.x += hitbox.global_scale.x * 0.25
+				hitbox.global_scale.y += hitbox.global_scale.y * 0.25
 				
 			var anims: AnimatedSprite2D = claw.get_node("ClawAnimations")
 			
 			if anims:
-				anims.scale = anims.scale * 0.25
+				anims.global_scale.x += anims.global_scale.x * 0.25
+				anims.global_scale.y += anims.global_scale.x * 0.25
 		Enums.Upgrade.TAILWHIP:
 			tail_whip.enabled = true
 		Enums.Upgrade.TAILWHIP_DMG:
@@ -94,17 +94,17 @@ func on_upgrade_receive(upgrade: Enums.Upgrade):
 		Enums.Upgrade.TAILWHIP_SPEED:
 			tail_whip.speed += tail_whip.speed * 0.25
 		Enums.Upgrade.TAILWHIP_SIZE:
-			return # TODO FIX THIS AND CLAW SIZE
-
 			var hitbox: Area2D = tail_whip.get_node("Hitbox")
 			
 			if hitbox:
-				hitbox.scale = hitbox.scale * 0.25
-				
+				hitbox.global_scale.x += hitbox.global_scale.x * 0.25
+				hitbox.global_scale.y += hitbox.global_scale.y * 0.25
+			
 			var anims: AnimatedSprite2D = tail_whip.get_node("TailWhipAnimations")
 			
 			if anims:
-				anims.scale = anims.scale * 0.25
+				anims.global_scale.x += anims.global_scale.x * 0.25
+				anims.global_scale.y += anims.global_scale.x * 0.25
 		Enums.Upgrade.FURBALL:
 			furball.enabled = true
 		Enums.Upgrade.FURBALL_DMG:
