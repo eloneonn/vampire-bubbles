@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk4s5jhai7aah"]
+[gd_scene load_steps=20 format=3 uid="uid://bk4s5jhai7aah"]
 
 [ext_resource type="PackedScene" uid="uid://cf0knm48erqbj" path="res://scenes/player.tscn" id="1_id7p0"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
-[ext_resource type="PackedScene" uid="uid://6763pew6gisq" path="res://scenes/enemy_1.tscn" id="3_katr8"]
+[ext_resource type="PackedScene" uid="uid://bb1g5pqn04cbd" path="res://scenes/enemy_1.tscn" id="3_katr8"]
 [ext_resource type="PackedScene" uid="uid://bs7afodpendgk" path="res://scenes/map.tscn" id="4_eut1i"]
 [ext_resource type="Texture2D" uid="uid://dllgd11782nqa" path="res://assets/backgrounds/titlescreen.png" id="5_6vwkc"]
 [ext_resource type="Texture2D" uid="uid://bo37j2gfg6cxq" path="res://assets/backgrounds/win screen.png" id="5_e8qk5"]
@@ -13,7 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c2wla7tyrrjao" path="res://assets/backgrounds/quit button.png" id="8_o4rgp"]
 [ext_resource type="Texture2D" uid="uid://bljn1g5c5e1u1" path="res://assets/backgrounds/settings.png" id="9_fsomx"]
 [ext_resource type="Texture2D" uid="uid://nwqeyq640fvw" path="res://assets/backgrounds/back button.png" id="10_n5n3i"]
-[ext_resource type="PackedScene" uid="uid://bp3vjoqhoc4h2" path="res://music_slider.tscn" id="11_nggdx"]
+[ext_resource type="PackedScene" path="res://music_slider.tscn" id="11_nggdx"]
+[ext_resource type="Texture2D" uid="uid://bmxl080ul7j4k" path="res://assets/backgrounds/continue button.png" id="15_jj0s7"]
 
 [sub_resource type="Animation" id="Animation_fxruk"]
 length = 0.001
@@ -243,10 +244,7 @@ theme_override_font_sizes/font_size = 60
 text = "You lost..."
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="TextureButton" parent="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/CenterContainer"]
+[node name="Button" type="TextureButton" parent="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 texture_normal = ExtResource("6_05ud4")
@@ -407,19 +405,25 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PauseMenu/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 80
 text = "Game paused"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/Label"]
 layout_mode = 0
 
-[node name="Continue" type="Button" parent="PauseMenu/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Continue"
 
-[node name="BackToMenu" type="Button" parent="PauseMenu/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
-text = "Back to menu"
+
+[node name="Continue" type="TextureButton" parent="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_jj0s7")
+
+[node name="BackToMenu" type="TextureButton" parent="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_05ud4")
 
 [node name="UpgradeScreen" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -469,14 +473,14 @@ process_mode = 3
 volume_db = -7.0
 bus = &"Music"
 
-[connection signal="pressed" from="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/CenterContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer/UpgradeButton1" to="." method="_on_upgrade_button_1_pressed"]
 [connection signal="pressed" from="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer/UpgradeButton2" to="." method="_on_upgrade_button_2_pressed"]
 [connection signal="pressed" from="UpgradeScreen/CenterContainer/VBoxContainer/HBoxContainer/UpgradeButton3" to="." method="_on_upgrade_button_3_pressed"]
