@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_imjcd"]
 [ext_resource type="PackedScene" uid="uid://bb1g5pqn04cbd" path="res://scenes/enemy_1.tscn" id="3_katr8"]
 [ext_resource type="PackedScene" uid="uid://bs7afodpendgk" path="res://scenes/map.tscn" id="4_eut1i"]
-[ext_resource type="Texture2D" uid="uid://vjnkvtvgprqe" path="res://assets/backgrounds/titlescreen.png" id="5_6vwkc"]
-[ext_resource type="Texture2D" uid="uid://bikorf5mg0mi0" path="res://assets/backgrounds/play button.png" id="6_jm38m"]
+[ext_resource type="Texture2D" uid="uid://dllgd11782nqa" path="res://assets/backgrounds/titlescreen.png" id="5_6vwkc"]
+[ext_resource type="Texture2D" uid="uid://bjn0t4homw7m3" path="res://assets/backgrounds/play button.png" id="6_jm38m"]
 
 [sub_resource type="Animation" id="Animation_fxruk"]
 length = 0.001
