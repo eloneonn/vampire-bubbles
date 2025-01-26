@@ -2,25 +2,31 @@ extends Node
 
 var max_health: float = 100.0
 var experience: float = 0.0
+var current_experience: float = 0.0
 var kill_count: int = 0
 var level: int = 1
 var upgrades: Array[Enums.Upgrade] = []
 var next_level = 100
-var next_level_modifier = 1.05
+var next_level_absolute = 100
+var next_level_modifier = 1.25
 
-signal xp_changed(value:float)
+signal xp_changed(value:float, max: float)
 signal received_upgrade(upgrade: Enums.Upgrade)
 signal level_up(level: int)
 
 func add_experience(amount: float) -> void:
 	experience += amount
-	xp_changed.emit(experience)
+	current_experience += amount
 	
 	if experience >= next_level:
 		level += 1
-		next_level += next_level * next_level_modifier
+		next_level_absolute = next_level_absolute * next_level_modifier
+		next_level += next_level_absolute
 		await get_tree().create_timer(0.2).timeout
 		level_up.emit(level)
+		current_experience = 0.0
+	
+	xp_changed.emit(current_experience, next_level_absolute)
 
 func add_kill(amount: int) -> void:
 	kill_count += amount

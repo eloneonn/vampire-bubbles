@@ -59,8 +59,9 @@ func _on_health_lost_health(amount: float) -> void:
 	camera.apply_shake()
 	health_bar.value = health.health  # Update health bar when damaged
 
-func _on_xp_change(xp: float) -> void:
+func _on_xp_change(xp: float, max: float) -> void:
 	xp_bar.value = xp
+	xp_bar.max_value = max
 
 func on_upgrade_receive(upgrade: Enums.Upgrade):
 	match upgrade:
