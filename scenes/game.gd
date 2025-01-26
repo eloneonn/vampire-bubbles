@@ -2,8 +2,6 @@ extends Node2D
 
 @onready var game_over_screen: CanvasLayer = $GameOverScreen
 @onready var victory_screen: CanvasLayer = $VictoryScreen
-@onready var victory_label: Label = $VictoryScreen/CenterContainer/VBoxContainer/Label
-@onready var game_over_label: Label = $GameOverScreen/CenterContainer/VBoxContainer/Label
 @onready var main_menu: CanvasLayer = $MainMenu
 @onready var check_button: CheckButton = $MainMenu/MarginContainer/CenterContainer/VBoxContainer/CheckButton
 @onready var pause_menu: CanvasLayer = $PauseMenu
@@ -12,6 +10,8 @@ extends Node2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var center_container: MarginContainer = $MainMenu/CenterContainer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var game_over_label: Label = $GameOverScreen/CenterContainer/MarginContainer/VBoxContainer/Label
+@onready var victory_label: Label = $VictoryScreen/CenterContainer/MarginContainer/VBoxContainer/Label
 
 @onready var upgrade_button_1: TextureButton = %UpgradeButton1
 @onready var upgrade_button_2: TextureButton = %UpgradeButton2
